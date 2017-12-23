@@ -1,0 +1,855 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="SocketBase">
+      <UniqueIdentifier>{e9eb2a29-4886-40ef-9dfc-671f9899b792}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThreadSync">
+      <UniqueIdentifier>{2599dba5-f65c-45aa-8e14-b621ae1448bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RuntimeLogger">
+      <UniqueIdentifier>{ea5f6678-96f6-4bd4-af75-c9b1228cd6a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ToolFuncs">
+      <UniqueIdentifier>{81434781-723f-41e9-bbaf-edb452854fec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThreadPool">
+      <UniqueIdentifier>{f420a16a-06d4-4614-ae40-d71a1c2cc457}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HttpServer">
+      <UniqueIdentifier>{82eb9719-d54f-4079-9c58-8e5cbb8dc405}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SystemCounter">
+      <UniqueIdentifier>{86bd26da-9152-4396-b0ee-90a5ea01aa4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JsonRequest">
+      <UniqueIdentifier>{23c2c954-4624-4a46-8c3f-481b1bf84920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Services">
+      <UniqueIdentifier>{e681cbe1-d991-469c-a7cc-624db5eda222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{2db573bc-c02d-47ec-8174-9fb5a46a4665}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\Config">
+      <UniqueIdentifier>{adb7017f-8614-4c5a-9233-f766d2576aee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\BaseInfo">
+      <UniqueIdentifier>{b516b8f5-427f-42d7-9ce2-b0903634a49d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\FileManager">
+      <UniqueIdentifier>{8f8ad883-e7f8-4d29-8816-e0e541c8a2da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\ProcessManager">
+      <UniqueIdentifier>{93cf4ff3-88ff-4e3d-86e5-74bc9cd178cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainModel">
+      <UniqueIdentifier>{fdde765f-53b6-4eee-a7a7-da2754cdd6f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainModel\Entity">
+      <UniqueIdentifier>{2cfdcaf2-2a4a-4143-a997-7ef2eccfdb5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainModel\Pool">
+      <UniqueIdentifier>{5837b85a-62f6-45dc-9956-db4923d18b21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\User">
+      <UniqueIdentifier>{4fa79de1-cc3e-4455-917c-7f8fd116d0c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\Source">
+      <UniqueIdentifier>{8fb8ebfa-5312-495c-b326-567451f49a0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\MoreRule">
+      <UniqueIdentifier>{405d0be8-b8bb-4a7b-8cd4-cd61e10e8bb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\Press">
+      <UniqueIdentifier>{2e400e57-d73f-4321-910f-aa6607d9de3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\PressType">
+      <UniqueIdentifier>{c4b09dfd-2d22-410a-8397-ee57b2d3da74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\PressPrice">
+      <UniqueIdentifier>{d90c8359-c9af-4318-80b6-a42ca70c3c67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\DieCutter">
+      <UniqueIdentifier>{69581ad4-24e6-4e02-9631-9175ec844322}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\ImpressPrice">
+      <UniqueIdentifier>{b849452e-9e32-4893-b5af-d51efd8275a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\FilmPrice">
+      <UniqueIdentifier>{4dcc29f2-ef73-499b-bf77-d3df7d5be24d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\PartType">
+      <UniqueIdentifier>{3b3b4685-706e-4411-8106-0ea0ab832d6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\Part">
+      <UniqueIdentifier>{0386c41e-b811-4f50-afe6-76cf7487d36e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainModel\PriceCounter">
+      <UniqueIdentifier>{caf90c79-14cf-4bef-966a-3cbd0b2b41e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\SourceType">
+      <UniqueIdentifier>{3bc54a99-3e58-4aca-969c-b23c3eb610bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\Calculate">
+      <UniqueIdentifier>{5cf4114a-ebbd-4e6b-b327-6207f08399f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\Order">
+      <UniqueIdentifier>{5e3bb2a3-e54d-4132-9517-6b32a1904cb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sqlite">
+      <UniqueIdentifier>{b0d30c3c-1306-4cfa-aa21-28f7479a7b65}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SocketBase\SocketBase.cpp">
+      <Filter>SocketBase</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadSync\ThreadSync.cpp">
+      <Filter>ThreadSync</Filter>
+    </ClCompile>
+    <ClCompile Include="RuntimeLogger\RuntimeLogger.cpp">
+      <Filter>RuntimeLogger</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolFuncs\ToolFuncs.cpp">
+      <Filter>ToolFuncs</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadPool\ServerTask.cpp">
+      <Filter>ThreadPool</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadPool\ServerThread.cpp">
+      <Filter>ThreadPool</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadPool\ServerThreadPool.cpp">
+      <Filter>ThreadPool</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpServer\StaticHttpServer.cpp">
+      <Filter>HttpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpServer\SimpleHttpRequest.cpp">
+      <Filter>HttpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpServer\StaticNetServer.cpp">
+      <Filter>HttpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpServer\TaskHttpClientRequest.cpp">
+      <Filter>HttpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpServer\SimpleHttpResponse.cpp">
+      <Filter>HttpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpServer\DiskFileSystem.cpp">
+      <Filter>HttpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpServer\MemedFileSystem.cpp">
+      <Filter>HttpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpServer\IStaticFileSystem.cpp">
+      <Filter>HttpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpServer\StaticFileInfo.cpp">
+      <Filter>HttpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpServer\TaskHttpGetFileHandler.cpp">
+      <Filter>HttpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemCounter\SystemInfoCounter.cpp">
+      <Filter>SystemCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemCounter\ProcessorCounter.cpp">
+      <Filter>SystemCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemCounter\MemoryCounter.cpp">
+      <Filter>SystemCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemCounter\ProcessCounter.cpp">
+      <Filter>SystemCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonRequest\EncodingToolsClass.cpp">
+      <Filter>JsonRequest</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonRequest\IJSONRequestHandler.cpp">
+      <Filter>JsonRequest</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpServer\TaskHttpPostHandler.cpp">
+      <Filter>HttpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="Services\ServiceBase.cpp">
+      <Filter>Services</Filter>
+    </ClCompile>
+    <ClCompile Include="Services\ServicePRMonitor.cpp">
+      <Filter>Services</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceBase.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceManager.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceGetPathList.cpp">
+      <Filter>Interface\BaseInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceGetConfigList.cpp">
+      <Filter>Interface\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\CommonFunction.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceBaseSysInfo.cpp">
+      <Filter>Interface\BaseInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceBaseFileVersion.cpp">
+      <Filter>Interface\BaseInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceProcessGet.cpp">
+      <Filter>Interface\ProcessManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceProcessCloseById.cpp">
+      <Filter>Interface\ProcessManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceProcessOpenByName.cpp">
+      <Filter>Interface\ProcessManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceFilesGet.cpp">
+      <Filter>Interface\FileManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceFilesReplace.cpp">
+      <Filter>Interface\FileManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceFilesRemove.cpp">
+      <Filter>Interface\FileManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceFilesUpload.cpp">
+      <Filter>Interface\FileManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolFuncs\UrlTransCode.cpp">
+      <Filter>ToolFuncs</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceGetConfigContent.cpp">
+      <Filter>Interface\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceSetConfigContent.cpp">
+      <Filter>Interface\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceProcessClose.cpp">
+      <Filter>Interface\ProcessManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceProcessIsExist.cpp">
+      <Filter>Interface\ProcessManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceProcessOpen.cpp">
+      <Filter>Interface\ProcessManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceProcessSystem.cpp">
+      <Filter>Interface\ProcessManager</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpServer\TaskPostConfigVerify.cpp">
+      <Filter>HttpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="MainModel\MainModel.cpp">
+      <Filter>MainModel</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\UserEntity.cpp">
+      <Filter>MainModel\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\UserPool.cpp">
+      <Filter>MainModel\Pool</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceUserAdd.cpp">
+      <Filter>Interface\User</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceUserDelete.cpp">
+      <Filter>Interface\User</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceUserChangePassword.cpp">
+      <Filter>Interface\User</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceUserAll.cpp">
+      <Filter>Interface\User</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\SourceEntity.cpp">
+      <Filter>MainModel\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\SourcePool.cpp">
+      <Filter>MainModel\Pool</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceSourceAdd.cpp">
+      <Filter>Interface\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceSourceAll.cpp">
+      <Filter>Interface\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceSourceDelete.cpp">
+      <Filter>Interface\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\MoreruleEntity.cpp">
+      <Filter>MainModel\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\MorerulePool.cpp">
+      <Filter>MainModel\Pool</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceMoreruleAdd.cpp">
+      <Filter>Interface\MoreRule</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceMoreruleAll.cpp">
+      <Filter>Interface\MoreRule</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceMoreruleDelete.cpp">
+      <Filter>Interface\MoreRule</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePressAdd.cpp">
+      <Filter>Interface\Press</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePressAll.cpp">
+      <Filter>Interface\Press</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePressDelete.cpp">
+      <Filter>Interface\Press</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\PressEntity.cpp">
+      <Filter>MainModel\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\PressPool.cpp">
+      <Filter>MainModel\Pool</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\PressTypeEntity.cpp">
+      <Filter>MainModel\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\PressTypePool.cpp">
+      <Filter>MainModel\Pool</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePressTypeAdd.cpp">
+      <Filter>Interface\PressType</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePressTypeAll.cpp">
+      <Filter>Interface\PressType</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePressTypeDelete.cpp">
+      <Filter>Interface\PressType</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\PressPriceEntity.cpp">
+      <Filter>MainModel\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\PressPricePool.cpp">
+      <Filter>MainModel\Pool</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePressPriceAdd.cpp">
+      <Filter>Interface\PressPrice</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePressPriceAll.cpp">
+      <Filter>Interface\PressPrice</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePressPriceDelete.cpp">
+      <Filter>Interface\PressPrice</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\DieCutterEntity.cpp">
+      <Filter>MainModel\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\DieCutterPool.cpp">
+      <Filter>MainModel\Pool</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceDieCutterAdd.cpp">
+      <Filter>Interface\DieCutter</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceDieCutterAll.cpp">
+      <Filter>Interface\DieCutter</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceDieCutterDelete.cpp">
+      <Filter>Interface\DieCutter</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceDieCutterGetPrice.cpp">
+      <Filter>Interface\DieCutter</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceDieCutterSetPrice.cpp">
+      <Filter>Interface\DieCutter</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\ImpressPricePool.cpp">
+      <Filter>MainModel\Pool</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceImpressGetCheckPrice.cpp">
+      <Filter>Interface\ImpressPrice</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceImpressGetPrice.cpp">
+      <Filter>Interface\ImpressPrice</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceImpressSetCheckPrice.cpp">
+      <Filter>Interface\ImpressPrice</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceImpressSetPrice.cpp">
+      <Filter>Interface\ImpressPrice</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\FilmPricePool.cpp">
+      <Filter>MainModel\Pool</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceFilmGetPrice.cpp">
+      <Filter>Interface\FilmPrice</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceFilmSetPrice.cpp">
+      <Filter>Interface\FilmPrice</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePartTypeAdd.cpp">
+      <Filter>Interface\PartType</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePartTypeAll.cpp">
+      <Filter>Interface\PartType</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePartTypeDelete.cpp">
+      <Filter>Interface\PartType</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\PartTypeEntity.cpp">
+      <Filter>MainModel\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\PartTypePool.cpp">
+      <Filter>MainModel\Pool</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\PartPool.cpp">
+      <Filter>MainModel\Pool</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\PartEntity.cpp">
+      <Filter>MainModel\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePartAdd.cpp">
+      <Filter>Interface\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePartAll.cpp">
+      <Filter>Interface\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfacePartDelete.cpp">
+      <Filter>Interface\Part</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\PriceCounter.cpp">
+      <Filter>MainModel\PriceCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\SourceTypeEntity.cpp">
+      <Filter>MainModel\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\SourceTypePool.cpp">
+      <Filter>MainModel\Pool</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceSourceTypeAdd.cpp">
+      <Filter>Interface\SourceType</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceSourceTypeAll.cpp">
+      <Filter>Interface\SourceType</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceSourceTypeDelete.cpp">
+      <Filter>Interface\SourceType</Filter>
+    </ClCompile>
+    <ClCompile Include="MainModel\SourceSelectPlanEntity.cpp">
+      <Filter>MainModel\PriceCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceCalculatePrice.cpp">
+      <Filter>Interface\Calculate</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceFilmMoreruleAdd.cpp">
+      <Filter>Interface\FilmPrice</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceFilmMoreruleAll.cpp">
+      <Filter>Interface\FilmPrice</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceFilmMoreruleDelete.cpp">
+      <Filter>Interface\FilmPrice</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceOrderAdd.cpp">
+      <Filter>Interface\Order</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceOrderGet.cpp">
+      <Filter>Interface\Order</Filter>
+    </ClCompile>
+    <ClCompile Include="sqlite\DBHelper.cpp">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceOrderGetCondition.cpp">
+      <Filter>Interface\Order</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface\InterfaceOrderDelete.cpp">
+      <Filter>Interface\Order</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SocketBase\SocketBase.h">
+      <Filter>SocketBase</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadSync\ThreadSync.h">
+      <Filter>ThreadSync</Filter>
+    </ClInclude>
+    <ClInclude Include="RuntimeLogger\RuntimeLogger.h">
+      <Filter>RuntimeLogger</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolFuncs\ToolFuncs.h">
+      <Filter>ToolFuncs</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadPool\ServerTask.h">
+      <Filter>ThreadPool</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadPool\ServerThread.h">
+      <Filter>ThreadPool</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadPool\ServerThreadPool.h">
+      <Filter>ThreadPool</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpServer\StaticHttpServer.h">
+      <Filter>HttpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpServer\SimpleHttpRequest.h">
+      <Filter>HttpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpServer\StaticNetServer.h">
+      <Filter>HttpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpServer\TaskHttpClientRequest.h">
+      <Filter>HttpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpServer\SimpleHttpResponse.h">
+      <Filter>HttpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpServer\DiskFileSystem.h">
+      <Filter>HttpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpServer\MemedFileSystem.h">
+      <Filter>HttpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpServer\IStaticFileSystem.h">
+      <Filter>HttpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpServer\StaticFileInfo.h">
+      <Filter>HttpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpServer\TaskHttpGetFileHandler.h">
+      <Filter>HttpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemCounter\SystemInfoCounter.h">
+      <Filter>SystemCounter</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemCounter\ProcessorCounter.h">
+      <Filter>SystemCounter</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemCounter\MemoryCounter.h">
+      <Filter>SystemCounter</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemCounter\ProcessCounter.h">
+      <Filter>SystemCounter</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonRequest\EncodingToolsClass.h">
+      <Filter>JsonRequest</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonRequest\IJSONRequestHandler.h">
+      <Filter>JsonRequest</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpServer\TaskHttpPostHandler.h">
+      <Filter>HttpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="Services\ServiceBase.h">
+      <Filter>Services</Filter>
+    </ClInclude>
+    <ClInclude Include="Services\ServicePRMonitor.h">
+      <Filter>Services</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceBase.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceManager.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceGetPathList.h">
+      <Filter>Interface\BaseInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceGetConfigList.h">
+      <Filter>Interface\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceDefine.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceInclude.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\CommonFunction.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceBaseSysInfo.h">
+      <Filter>Interface\BaseInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceBaseFileVersion.h">
+      <Filter>Interface\BaseInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceProcessGet.h">
+      <Filter>Interface\ProcessManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceProcessCloseById.h">
+      <Filter>Interface\ProcessManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceProcessOpenByName.h">
+      <Filter>Interface\ProcessManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceFilesGet.h">
+      <Filter>Interface\FileManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceFilesReplace.h">
+      <Filter>Interface\FileManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceFilesRemove.h">
+      <Filter>Interface\FileManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceFilesUpload.h">
+      <Filter>Interface\FileManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolFuncs\UrlTransCode.h">
+      <Filter>ToolFuncs</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceGetConfigContent.h">
+      <Filter>Interface\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceSetConfigContent.h">
+      <Filter>Interface\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceProcessClose.h">
+      <Filter>Interface\ProcessManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceProcessIsExist.h">
+      <Filter>Interface\ProcessManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceProcessOpen.h">
+      <Filter>Interface\ProcessManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceProcessSystem.h">
+      <Filter>Interface\ProcessManager</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpServer\TaskPostConfigVerify.h">
+      <Filter>HttpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="public.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="MainModel\MainModel.h">
+      <Filter>MainModel</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\UserEntity.h">
+      <Filter>MainModel\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\UserPool.h">
+      <Filter>MainModel\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceUserAdd.h">
+      <Filter>Interface\User</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceUserDelete.h">
+      <Filter>Interface\User</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceUserChangePassword.h">
+      <Filter>Interface\User</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceUserAll.h">
+      <Filter>Interface\User</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\SourceEntity.h">
+      <Filter>MainModel\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\SourcePool.h">
+      <Filter>MainModel\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceSourceAdd.h">
+      <Filter>Interface\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceSourceAll.h">
+      <Filter>Interface\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceSourceDelete.h">
+      <Filter>Interface\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\MoreruleEntity.h">
+      <Filter>MainModel\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\MorerulePool.h">
+      <Filter>MainModel\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceMoreruleAdd.h">
+      <Filter>Interface\MoreRule</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceMoreruleAll.h">
+      <Filter>Interface\MoreRule</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceMoreruleDelete.h">
+      <Filter>Interface\MoreRule</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePressAdd.h">
+      <Filter>Interface\Press</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePressAll.h">
+      <Filter>Interface\Press</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePressDelete.h">
+      <Filter>Interface\Press</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\PressEntity.h">
+      <Filter>MainModel\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\PressPool.h">
+      <Filter>MainModel\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\PressTypeEntity.h">
+      <Filter>MainModel\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\PressTypePool.h">
+      <Filter>MainModel\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePressTypeAdd.h">
+      <Filter>Interface\PressType</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePressTypeAll.h">
+      <Filter>Interface\PressType</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePressTypeDelete.h">
+      <Filter>Interface\PressType</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\PressPriceEntity.h">
+      <Filter>MainModel\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\PressPricePool.h">
+      <Filter>MainModel\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePressPriceAdd.h">
+      <Filter>Interface\PressPrice</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePressPriceAll.h">
+      <Filter>Interface\PressPrice</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePressPriceDelete.h">
+      <Filter>Interface\PressPrice</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\DieCutterEntity.h">
+      <Filter>MainModel\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\DieCutterPool.h">
+      <Filter>MainModel\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceDieCutterAdd.h">
+      <Filter>Interface\DieCutter</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceDieCutterAll.h">
+      <Filter>Interface\DieCutter</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceDieCutterDelete.h">
+      <Filter>Interface\DieCutter</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceDieCutterGetPrice.h">
+      <Filter>Interface\DieCutter</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceDieCutterSetPrice.h">
+      <Filter>Interface\DieCutter</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\ImpressPricePool.h">
+      <Filter>MainModel\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceImpressGetCheckPrice.h">
+      <Filter>Interface\ImpressPrice</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceImpressGetPrice.h">
+      <Filter>Interface\ImpressPrice</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceImpressSetCheckPrice.h">
+      <Filter>Interface\ImpressPrice</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceImpressSetPrice.h">
+      <Filter>Interface\ImpressPrice</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\FilmPricePool.h">
+      <Filter>MainModel\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceFilmGetPrice.h">
+      <Filter>Interface\FilmPrice</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceFilmSetPrice.h">
+      <Filter>Interface\FilmPrice</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePartTypeAdd.h">
+      <Filter>Interface\PartType</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePartTypeAll.h">
+      <Filter>Interface\PartType</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePartTypeDelete.h">
+      <Filter>Interface\PartType</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\PartTypeEntity.h">
+      <Filter>MainModel\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\PartTypePool.h">
+      <Filter>MainModel\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\PartPool.h">
+      <Filter>MainModel\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\PartEntity.h">
+      <Filter>MainModel\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePartAdd.h">
+      <Filter>Interface\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePartAll.h">
+      <Filter>Interface\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfacePartDelete.h">
+      <Filter>Interface\Part</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\PriceCounter.h">
+      <Filter>MainModel\PriceCounter</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\SourceTypeEntity.h">
+      <Filter>MainModel\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\SourceTypePool.h">
+      <Filter>MainModel\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceSourceTypeAdd.h">
+      <Filter>Interface\SourceType</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceSourceTypeAll.h">
+      <Filter>Interface\SourceType</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceSourceTypeDelete.h">
+      <Filter>Interface\SourceType</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\SourceSelectPlanEntity.h">
+      <Filter>MainModel\PriceCounter</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceCalculatePrice.h">
+      <Filter>Interface\Calculate</Filter>
+    </ClInclude>
+    <ClInclude Include="MainModel\CommonDefine.h">
+      <Filter>MainModel</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceFilmMoreruleAdd.h">
+      <Filter>Interface\FilmPrice</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceFilmMoreruleAll.h">
+      <Filter>Interface\FilmPrice</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceFilmMoreruleDelete.h">
+      <Filter>Interface\FilmPrice</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceOrderAdd.h">
+      <Filter>Interface\Order</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceOrderGet.h">
+      <Filter>Interface\Order</Filter>
+    </ClInclude>
+    <ClInclude Include="sqlite\DBHelper.h">
+      <Filter>sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceOrderGetCondition.h">
+      <Filter>Interface\Order</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\InterfaceOrderDelete.h">
+      <Filter>Interface\Order</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ZCWebServer.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

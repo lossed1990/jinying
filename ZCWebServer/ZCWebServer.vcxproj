@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{996A4CF5-77D2-458B-B444-15B602813A8B}</ProjectGuid>
+    <RootNamespace>ZCWebServer</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>ZCWebServer</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.25420.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\3rdPart\jemalloc_4.2.1\include\msvc_compat;C:\3rdPart\jemalloc_4.2.1\include;C:\3rdPart\boost_1_61_0\boost;C:\3rdPart\boost_1_61_0;.\thirdpart\include\curl;.\thirdpart\include\rapidjson;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\3rdPart\jemalloc_4.2.1\include\msvc_compat;C:\3rdPart\jemalloc_4.2.1\include;C:\3rdPart\boost_1_61_0\boost;C:\3rdPart\boost_1_61_0;.\thirdpart\include\curl;.\thirdpart\include\rapidjson;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4003;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="HttpServer\DiskFileSystem.cpp" />
+    <ClCompile Include="HttpServer\IStaticFileSystem.cpp" />
+    <ClCompile Include="HttpServer\MemedFileSystem.cpp" />
+    <ClCompile Include="HttpServer\SimpleHttpRequest.cpp" />
+    <ClCompile Include="HttpServer\SimpleHttpResponse.cpp" />
+    <ClCompile Include="HttpServer\StaticFileInfo.cpp" />
+    <ClCompile Include="HttpServer\StaticHttpServer.cpp" />
+    <ClCompile Include="HttpServer\StaticNetServer.cpp" />
+    <ClCompile Include="HttpServer\TaskHttpClientRequest.cpp" />
+    <ClCompile Include="HttpServer\TaskHttpGetFileHandler.cpp" />
+    <ClCompile Include="HttpServer\TaskHttpPostHandler.cpp" />
+    <ClCompile Include="HttpServer\TaskPostConfigVerify.cpp" />
+    <ClCompile Include="Interface\CommonFunction.cpp" />
+    <ClCompile Include="Interface\InterfaceBase.cpp" />
+    <ClCompile Include="Interface\InterfaceBaseFileVersion.cpp" />
+    <ClCompile Include="Interface\InterfaceBaseSysInfo.cpp" />
+    <ClCompile Include="Interface\InterfaceCalculatePrice.cpp" />
+    <ClCompile Include="Interface\InterfaceDieCutterAdd.cpp" />
+    <ClCompile Include="Interface\InterfaceDieCutterAll.cpp" />
+    <ClCompile Include="Interface\InterfaceDieCutterDelete.cpp" />
+    <ClCompile Include="Interface\InterfaceDieCutterGetPrice.cpp" />
+    <ClCompile Include="Interface\InterfaceDieCutterSetPrice.cpp" />
+    <ClCompile Include="Interface\InterfaceFilesGet.cpp" />
+    <ClCompile Include="Interface\InterfaceFilesRemove.cpp" />
+    <ClCompile Include="Interface\InterfaceFilesReplace.cpp" />
+    <ClCompile Include="Interface\InterfaceFilesUpload.cpp" />
+    <ClCompile Include="Interface\InterfaceFilmGetPrice.cpp" />
+    <ClCompile Include="Interface\InterfaceFilmMoreruleAdd.cpp" />
+    <ClCompile Include="Interface\InterfaceFilmMoreruleAll.cpp" />
+    <ClCompile Include="Interface\InterfaceFilmMoreruleDelete.cpp" />
+    <ClCompile Include="Interface\InterfaceFilmSetPrice.cpp" />
+    <ClCompile Include="Interface\InterfaceGetConfigContent.cpp" />
+    <ClCompile Include="Interface\InterfaceGetConfigList.cpp" />
+    <ClCompile Include="Interface\InterfaceGetPathList.cpp" />
+    <ClCompile Include="Interface\InterfaceImpressGetCheckPrice.cpp" />
+    <ClCompile Include="Interface\InterfaceImpressGetPrice.cpp" />
+    <ClCompile Include="Interface\InterfaceImpressSetCheckPrice.cpp" />
+    <ClCompile Include="Interface\InterfaceImpressSetPrice.cpp" />
+    <ClCompile Include="Interface\InterfaceManager.cpp" />
+    <ClCompile Include="Interface\InterfaceMoreruleAdd.cpp" />
+    <ClCompile Include="Interface\InterfaceMoreruleAll.cpp" />
+    <ClCompile Include="Interface\InterfaceMoreruleDelete.cpp" />
+    <ClCompile Include="Interface\InterfaceOrderAdd.cpp" />
+    <ClCompile Include="Interface\InterfaceOrderDelete.cpp" />
+    <ClCompile Include="Interface\InterfaceOrderGet.cpp" />
+    <ClCompile Include="Interface\InterfaceOrderGetCondition.cpp" />
+    <ClCompile Include="Interface\InterfacePartAdd.cpp" />
+    <ClCompile Include="Interface\InterfacePartAll.cpp" />
+    <ClCompile Include="Interface\InterfacePartDelete.cpp" />
+    <ClCompile Include="Interface\InterfacePartTypeAdd.cpp" />
+    <ClCompile Include="Interface\InterfacePartTypeAll.cpp" />
+    <ClCompile Include="Interface\InterfacePartTypeDelete.cpp" />
+    <ClCompile Include="Interface\InterfacePressAdd.cpp" />
+    <ClCompile Include="Interface\InterfacePressAll.cpp" />
+    <ClCompile Include="Interface\InterfacePressDelete.cpp" />
+    <ClCompile Include="Interface\InterfacePressPriceAdd.cpp" />
+    <ClCompile Include="Interface\InterfacePressPriceAll.cpp" />
+    <ClCompile Include="Interface\InterfacePressPriceDelete.cpp" />
+    <ClCompile Include="Interface\InterfacePressTypeAdd.cpp" />
+    <ClCompile Include="Interface\InterfacePressTypeAll.cpp" />
+    <ClCompile Include="Interface\InterfacePressTypeDelete.cpp" />
+    <ClCompile Include="Interface\InterfaceProcessClose.cpp" />
+    <ClCompile Include="Interface\InterfaceProcessCloseById.cpp" />
+    <ClCompile Include="Interface\InterfaceProcessGet.cpp" />
+    <ClCompile Include="Interface\InterfaceProcessIsExist.cpp" />
+    <ClCompile Include="Interface\InterfaceProcessOpen.cpp" />
+    <ClCompile Include="Interface\InterfaceProcessOpenByName.cpp" />
+    <ClCompile Include="Interface\InterfaceProcessSystem.cpp" />
+    <ClCompile Include="Interface\InterfaceSetConfigContent.cpp" />
+    <ClCompile Include="Interface\InterfaceSourceAdd.cpp" />
+    <ClCompile Include="Interface\InterfaceSourceAll.cpp" />
+    <ClCompile Include="Interface\InterfaceSourceDelete.cpp" />
+    <ClCompile Include="Interface\InterfaceSourceTypeAdd.cpp" />
+    <ClCompile Include="Interface\InterfaceSourceTypeAll.cpp" />
+    <ClCompile Include="Interface\InterfaceSourceTypeDelete.cpp" />
+    <ClCompile Include="Interface\InterfaceUserAdd.cpp" />
+    <ClCompile Include="Interface\InterfaceUserAll.cpp" />
+    <ClCompile Include="Interface\InterfaceUserChangePassword.cpp" />
+    <ClCompile Include="Interface\InterfaceUserDelete.cpp" />
+    <ClCompile Include="JsonRequest\EncodingToolsClass.cpp" />
+    <ClCompile Include="JsonRequest\IJSONRequestHandler.cpp" />
+    <ClCompile Include="MainModel\PriceCounter.cpp" />
+    <ClCompile Include="MainModel\DieCutterEntity.cpp" />
+    <ClCompile Include="MainModel\DieCutterPool.cpp" />
+    <ClCompile Include="MainModel\FilmPricePool.cpp" />
+    <ClCompile Include="MainModel\ImpressPricePool.cpp" />
+    <ClCompile Include="MainModel\MainModel.cpp" />
+    <ClCompile Include="MainModel\MoreruleEntity.cpp" />
+    <ClCompile Include="MainModel\MorerulePool.cpp" />
+    <ClCompile Include="MainModel\PartEntity.cpp" />
+    <ClCompile Include="MainModel\PartPool.cpp" />
+    <ClCompile Include="MainModel\PartTypeEntity.cpp" />
+    <ClCompile Include="MainModel\PartTypePool.cpp" />
+    <ClCompile Include="MainModel\PressEntity.cpp" />
+    <ClCompile Include="MainModel\PressPool.cpp" />
+    <ClCompile Include="MainModel\PressPriceEntity.cpp" />
+    <ClCompile Include="MainModel\PressPricePool.cpp" />
+    <ClCompile Include="MainModel\PressTypeEntity.cpp" />
+    <ClCompile Include="MainModel\PressTypePool.cpp" />
+    <ClCompile Include="MainModel\SourceEntity.cpp" />
+    <ClCompile Include="MainModel\SourcePool.cpp" />
+    <ClCompile Include="MainModel\SourceSelectPlanEntity.cpp" />
+    <ClCompile Include="MainModel\SourceTypeEntity.cpp" />
+    <ClCompile Include="MainModel\SourceTypePool.cpp" />
+    <ClCompile Include="MainModel\UserEntity.cpp" />
+    <ClCompile Include="MainModel\UserPool.cpp" />
+    <ClCompile Include="RuntimeLogger\RuntimeLogger.cpp" />
+    <ClCompile Include="Services\ServiceBase.cpp" />
+    <ClCompile Include="Services\ServicePRMonitor.cpp" />
+    <ClCompile Include="SocketBase\SocketBase.cpp" />
+    <ClCompile Include="sqlite\DBHelper.cpp" />
+    <ClCompile Include="SystemCounter\MemoryCounter.cpp" />
+    <ClCompile Include="SystemCounter\ProcessCounter.cpp" />
+    <ClCompile Include="SystemCounter\ProcessorCounter.cpp" />
+    <ClCompile Include="SystemCounter\SystemInfoCounter.cpp" />
+    <ClCompile Include="ThreadPool\ServerTask.cpp" />
+    <ClCompile Include="ThreadPool\ServerThread.cpp" />
+    <ClCompile Include="ThreadPool\ServerThreadPool.cpp" />
+    <ClCompile Include="ThreadSync\ThreadSync.cpp" />
+    <ClCompile Include="ToolFuncs\ToolFuncs.cpp" />
+    <ClCompile Include="ToolFuncs\UrlTransCode.cpp" />
+    <ClCompile Include="WinMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HttpServer\DiskFileSystem.h" />
+    <ClInclude Include="HttpServer\IStaticFileSystem.h" />
+    <ClInclude Include="HttpServer\MemedFileSystem.h" />
+    <ClInclude Include="HttpServer\SimpleHttpRequest.h" />
+    <ClInclude Include="HttpServer\SimpleHttpResponse.h" />
+    <ClInclude Include="HttpServer\StaticFileInfo.h" />
+    <ClInclude Include="HttpServer\StaticHttpServer.h" />
+    <ClInclude Include="HttpServer\StaticNetServer.h" />
+    <ClInclude Include="HttpServer\TaskHttpClientRequest.h" />
+    <ClInclude Include="HttpServer\TaskHttpGetFileHandler.h" />
+    <ClInclude Include="HttpServer\TaskHttpPostHandler.h" />
+    <ClInclude Include="HttpServer\TaskPostConfigVerify.h" />
+    <ClInclude Include="Interface\CommonFunction.h" />
+    <ClInclude Include="Interface\InterfaceBase.h" />
+    <ClInclude Include="Interface\InterfaceBaseFileVersion.h" />
+    <ClInclude Include="Interface\InterfaceCalculatePrice.h" />
+    <ClInclude Include="Interface\InterfaceDefine.h" />
+    <ClInclude Include="Interface\InterfaceBaseSysInfo.h" />
+    <ClInclude Include="Interface\InterfaceDieCutterAdd.h" />
+    <ClInclude Include="Interface\InterfaceDieCutterAll.h" />
+    <ClInclude Include="Interface\InterfaceDieCutterDelete.h" />
+    <ClInclude Include="Interface\InterfaceDieCutterGetPrice.h" />
+    <ClInclude Include="Interface\InterfaceDieCutterSetPrice.h" />
+    <ClInclude Include="Interface\InterfaceFilesGet.h" />
+    <ClInclude Include="Interface\InterfaceFilesRemove.h" />
+    <ClInclude Include="Interface\InterfaceFilesReplace.h" />
+    <ClInclude Include="Interface\InterfaceFilesUpload.h" />
+    <ClInclude Include="Interface\InterfaceFilmGetPrice.h" />
+    <ClInclude Include="Interface\InterfaceFilmMoreruleAdd.h" />
+    <ClInclude Include="Interface\InterfaceFilmMoreruleAll.h" />
+    <ClInclude Include="Interface\InterfaceFilmMoreruleDelete.h" />
+    <ClInclude Include="Interface\InterfaceFilmSetPrice.h" />
+    <ClInclude Include="Interface\InterfaceGetConfigContent.h" />
+    <ClInclude Include="Interface\InterfaceGetConfigList.h" />
+    <ClInclude Include="Interface\InterfaceGetPathList.h" />
+    <ClInclude Include="Interface\InterfaceImpressGetCheckPrice.h" />
+    <ClInclude Include="Interface\InterfaceImpressGetPrice.h" />
+    <ClInclude Include="Interface\InterfaceImpressSetCheckPrice.h" />
+    <ClInclude Include="Interface\InterfaceImpressSetPrice.h" />
+    <ClInclude Include="Interface\InterfaceInclude.h" />
+    <ClInclude Include="Interface\InterfaceManager.h" />
+    <ClInclude Include="Interface\InterfaceMoreruleAdd.h" />
+    <ClInclude Include="Interface\InterfaceMoreruleAll.h" />
+    <ClInclude Include="Interface\InterfaceMoreruleDelete.h" />
+    <ClInclude Include="Interface\InterfaceOrderAdd.h" />
+    <ClInclude Include="Interface\InterfaceOrderDelete.h" />
+    <ClInclude Include="Interface\InterfaceOrderGet.h" />
+    <ClInclude Include="Interface\InterfaceOrderGetCondition.h" />
+    <ClInclude Include="Interface\InterfacePartAdd.h" />
+    <ClInclude Include="Interface\InterfacePartAll.h" />
+    <ClInclude Include="Interface\InterfacePartDelete.h" />
+    <ClInclude Include="Interface\InterfacePartTypeAdd.h" />
+    <ClInclude Include="Interface\InterfacePartTypeAll.h" />
+    <ClInclude Include="Interface\InterfacePartTypeDelete.h" />
+    <ClInclude Include="Interface\InterfacePressAdd.h" />
+    <ClInclude Include="Interface\InterfacePressAll.h" />
+    <ClInclude Include="Interface\InterfacePressDelete.h" />
+    <ClInclude Include="Interface\InterfacePressPriceAdd.h" />
+    <ClInclude Include="Interface\InterfacePressPriceAll.h" />
+    <ClInclude Include="Interface\InterfacePressPriceDelete.h" />
+    <ClInclude Include="Interface\InterfacePressTypeAdd.h" />
+    <ClInclude Include="Interface\InterfacePressTypeAll.h" />
+    <ClInclude Include="Interface\InterfacePressTypeDelete.h" />
+    <ClInclude Include="Interface\InterfaceProcessClose.h" />
+    <ClInclude Include="Interface\InterfaceProcessCloseById.h" />
+    <ClInclude Include="Interface\InterfaceProcessGet.h" />
+    <ClInclude Include="Interface\InterfaceProcessIsExist.h" />
+    <ClInclude Include="Interface\InterfaceProcessOpen.h" />
+    <ClInclude Include="Interface\InterfaceProcessOpenByName.h" />
+    <ClInclude Include="Interface\InterfaceProcessSystem.h" />
+    <ClInclude Include="Interface\InterfaceSetConfigContent.h" />
+    <ClInclude Include="Interface\InterfaceSourceAdd.h" />
+    <ClInclude Include="Interface\InterfaceSourceAll.h" />
+    <ClInclude Include="Interface\InterfaceSourceDelete.h" />
+    <ClInclude Include="Interface\InterfaceSourceTypeAdd.h" />
+    <ClInclude Include="Interface\InterfaceSourceTypeAll.h" />
+    <ClInclude Include="Interface\InterfaceSourceTypeDelete.h" />
+    <ClInclude Include="Interface\InterfaceUserAdd.h" />
+    <ClInclude Include="Interface\InterfaceUserAll.h" />
+    <ClInclude Include="Interface\InterfaceUserChangePassword.h" />
+    <ClInclude Include="Interface\InterfaceUserDelete.h" />
+    <ClInclude Include="JsonRequest\EncodingToolsClass.h" />
+    <ClInclude Include="JsonRequest\IJSONRequestHandler.h" />
+    <ClInclude Include="MainModel\CommonDefine.h" />
+    <ClInclude Include="MainModel\PriceCounter.h" />
+    <ClInclude Include="MainModel\DieCutterEntity.h" />
+    <ClInclude Include="MainModel\DieCutterPool.h" />
+    <ClInclude Include="MainModel\FilmPricePool.h" />
+    <ClInclude Include="MainModel\ImpressPricePool.h" />
+    <ClInclude Include="MainModel\MainModel.h" />
+    <ClInclude Include="MainModel\MoreruleEntity.h" />
+    <ClInclude Include="MainModel\MorerulePool.h" />
+    <ClInclude Include="MainModel\PartEntity.h" />
+    <ClInclude Include="MainModel\PartPool.h" />
+    <ClInclude Include="MainModel\PartTypeEntity.h" />
+    <ClInclude Include="MainModel\PartTypePool.h" />
+    <ClInclude Include="MainModel\PressEntity.h" />
+    <ClInclude Include="MainModel\PressPool.h" />
+    <ClInclude Include="MainModel\PressPriceEntity.h" />
+    <ClInclude Include="MainModel\PressPricePool.h" />
+    <ClInclude Include="MainModel\PressTypeEntity.h" />
+    <ClInclude Include="MainModel\PressTypePool.h" />
+    <ClInclude Include="MainModel\SourceEntity.h" />
+    <ClInclude Include="MainModel\SourcePool.h" />
+    <ClInclude Include="MainModel\SourceSelectPlanEntity.h" />
+    <ClInclude Include="MainModel\SourceTypeEntity.h" />
+    <ClInclude Include="MainModel\SourceTypePool.h" />
+    <ClInclude Include="MainModel\UserEntity.h" />
+    <ClInclude Include="MainModel\UserPool.h" />
+    <ClInclude Include="public.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="RuntimeLogger\RuntimeLogger.h" />
+    <ClInclude Include="Services\ServiceBase.h" />
+    <ClInclude Include="Services\ServicePRMonitor.h" />
+    <ClInclude Include="SocketBase\SocketBase.h" />
+    <ClInclude Include="sqlite\DBHelper.h" />
+    <ClInclude Include="SystemCounter\MemoryCounter.h" />
+    <ClInclude Include="SystemCounter\ProcessCounter.h" />
+    <ClInclude Include="SystemCounter\ProcessorCounter.h" />
+    <ClInclude Include="SystemCounter\SystemInfoCounter.h" />
+    <ClInclude Include="ThreadPool\ServerTask.h" />
+    <ClInclude Include="ThreadPool\ServerThread.h" />
+    <ClInclude Include="ThreadPool\ServerThreadPool.h" />
+    <ClInclude Include="ThreadSync\ThreadSync.h" />
+    <ClInclude Include="ToolFuncs\ToolFuncs.h" />
+    <ClInclude Include="ToolFuncs\UrlTransCode.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ZCWebServer.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>金鹰印务报价系统</title>
+
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+
+    <!-- iCheck -->
+    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="vendors/iCheck/skins/flat/aero.css" rel="stylesheet">
+
+    <!-- Datatables -->
+    <link href="vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+    <!-- bootstrap-wysiwyg -->
+    <link href="vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- toastr -->
+    <link rel="stylesheet" type="text/css" href="css/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+    <!-- daterangepicker -->
+    <link rel="stylesheet" type="text/css" media="all" href="css/daterangepicker.css" />
+
+    <!-- tab -->
+    <link href="css/tabdrop.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="css/custom.min.css" rel="stylesheet">
+
+    <!-- daterangepicker css-->
+    <style type="text/css">
+        #search-date-div { position: relative; }
+        #search-date-div i {
+          position: absolute; bottom: 10px; right: 24px; top: auto; cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>金鹰印务报价系统</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>欢迎,</span>
+                            <h2 id="welcome_tip">gxl</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <ul class="nav side-menu">
+                                <li><a><i class="fa fa-calculator"></i> 印务报价 <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a id="form_calculate_reticule">手提袋报价</a></li>
+                                        <li><a id="form_calculate_box">包装盒报价</a></li>
+                                        <!-- <li><a id="form_calculate_box">定制报价</a></li> -->
+                                    </ul>
+                                </li>
+                                <li><a><i class="fa fa-file-text-o"></i> 订单管理 <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a id="form_search_order">订单查询</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu_config"><a><i class="fa fa-edit"></i> 系统配置 <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a id="form_config_sourcetype">材料类别配置</a></li>
+                                        <li><a id="form_config_source">制作材料配置</a></li>
+                                        <li><a id="form_config_morerule">出数规则配置</a></li>
+                                        <li><a id="form_config_press">印刷机器配置</a></li>
+                                        <li><a id="form_config_presstype">印刷方式配置</a></li>
+                                        <li><a id="form_config_pressprice">印刷价格配置</a></li>
+                                        <li><a id="form_config_diecutter">刀模信息配置</a></li>
+                                        <li><a id="form_config_yahenfei">压痕成本配置</a></li>
+                                        <li><a id="form_config_fumo">覆膜单价配置</a></li>
+                                        <li><a id="form_config_parttype">配件种类配置</a></li>
+                                        <li><a id="form_config_parts">配件价格配置</a></li>
+                                        <li><a id="form_config_user">系统用户配置</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a id="user_tip" href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="images/img.jpg" alt="">gxl
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="javascript:;"> 修改密码</a></li>
+                                    <li><a href="index.html"><i class="fa fa-sign-out pull-right"></i>退出</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    <div class="row" id="ui_body">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                    <h2>欢迎使用金鹰印务报价系统 </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    南通金鹰印务中心版权所有 技术支持：931047642@qq.com
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <!-- <script src="vendors/jszip/dist/jszip.min.js"></script> -->
+    <!-- <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script> -->
+    <!-- Switchery -->
+    <script src="vendors/switchery/dist/switchery.min.js"></script>
+    <!-- daterangepicker -->
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/daterangepicker.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="js/custom.min.js"></script>
+
+    <!-- validator -->
+    <script src="vendors/validator/validator.js"></script>
+    <script type="text/javascript" src="js/js.cookie.js"></script>
+    <!-- toastr -->
+    <script src="js/toastr.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <!--tab-->
+    <script src="js/bootstrap-tabdrop.js"></script>
+
+    <script type="text/javascript" src="js/t-ui-manager.js"></script>
+    <script type="text/javascript" src="js/t-ui-calculate-reticule.js"></script>
+    <script type="text/javascript" src="js/t-ui-calculate-box.js"></script>
+    <script type="text/javascript" src="js/t-ui-order-search.js"></script>
+    <script type="text/javascript" src="js/t-ui-sourcetype-config.js"></script>
+    <script type="text/javascript" src="js/t-ui-source-config.js"></script>
+    <script type="text/javascript" src="js/t-ui-morerule-config.js"></script>
+    <script type="text/javascript" src="js/t-ui-press-config.js"></script>
+    <script type="text/javascript" src="js/t-ui-presstype-config.js"></script>
+    <script type="text/javascript" src="js/t-ui-pressprice-config.js"></script>
+    <script type="text/javascript" src="js/t-ui-diecutter-config.js"></script>
+    <script type="text/javascript" src="js/t-ui-impressprice-config.js"></script>
+    <script type="text/javascript" src="js/t-ui-filmprice-config.js"></script>
+    <script type="text/javascript" src="js/t-ui-parttype-config.js"></script>
+    <script type="text/javascript" src="js/t-ui-part-config.js"></script>
+    <script type="text/javascript" src="js/t-ui-user-config.js"></script>
+
+    <script type="text/javascript">
+        //通过cookie判断是否已经登录
+        if (Cookies.get('login') != "1") {
+            window.location = "/";
+        }
+
+        //判断用户类型，修改界面权限
+        if (Cookies.get('type') == "1") {
+            $('#menu_config').show();
+        } else {
+            $('#menu_config').hide();
+        }
+
+        function getQueryStringByName(name) {    
+            var result = location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));    
+            if (result == null || result.length < 1) {        
+                return "";    
+            }    
+            return result[1];
+        }
+
+        //更新用户名
+        var strCurrentUserName = decodeURI(getQueryStringByName('user'));
+        $('#welcome_tip').html(strCurrentUserName);
+        var tipHtml =
+            '<img src="images/img.jpg" alt="">' + strCurrentUserName +
+            '<span class=" fa fa-angle-down"></span>';
+        $('#user_tip').html(tipHtml);
+
+        //初始化提示框toastr的相关参数
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "positionClass": "toast-bottom-right",
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        //汉化table
+        var oLanguage = {
+            "oAria": {
+                "sSortAscending": ": 升序排列",
+                "sSortDescending": ": 降序排列"
+            },
+            "oPaginate": {
+                "sFirst": "首页",
+                "sLast": "末页",
+                "sNext": "下页",
+                "sPrevious": "上页"
+            },
+            "sEmptyTable": "没有相关记录",
+            "sInfo": "第 _START_ 到 _END_ 条记录，共 _TOTAL_ 条",
+            "sInfoEmpty": "第 0 到 0 条记录，共 0 条",
+            "sInfoFiltered": "(从 _MAX_ 条记录中检索)",
+            "sInfoPostFix": "",
+            "sDecimal": "",
+            "sThousands": ",",
+            "sLengthMenu": "每页显示条数: _MENU_",
+            "sLoadingRecords": "正在载入...",
+            "sProcessing": "正在载入...",
+            "sSearch": "搜索:",
+            "sSearchPlaceholder": "",
+            "sUrl": "",
+            "sZeroRecords": "没有相关记录"
+        }
+        $.fn.dataTable.defaults.oLanguage = oLanguage;
+
+        var oLiCurrentActive = null; //当前激活的li菜单
+
+        //菜单关联事件
+        $('#form_calculate_reticule').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_calculate_reticule').parent();
+            g_oReticuleCalculate.load();
+        });
+
+        $('#form_calculate_box').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_calculate_box').parent();
+            g_oBoxCalculate.load();
+        });
+
+        $('#form_search_order').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_search_order').parent();
+            g_oOrderSearch.load();
+        });
+
+        $('#form_config_sourcetype').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_config_sourcetype').parent();
+            g_oSourcetypeConfig.load();
+        });
+
+        $('#form_config_source').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_config_source').parent();
+            g_oSourceConfig.load();
+        });
+
+        $('#form_config_morerule').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_config_morerule').parent();
+            g_oMoreruleConfig.load();
+        });
+
+        $('#form_config_press').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_config_press').parent();
+            g_oPressConfig.load();
+        });
+
+        $('#form_config_presstype').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_config_presstype').parent();
+            g_oPresstypeConfig.load();
+        });
+
+        $('#form_config_pressprice').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_config_pressprice').parent();
+            g_oPresspriceConfig.load();
+        });
+
+        $('#form_config_diecutter').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_config_diecutter').parent();
+            g_oDieCutterConfig.load();
+        });
+
+        $('#form_config_yahenfei').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_config_yahenfei').parent();
+            g_oImpressPriceConfig.load();
+        });
+
+        $('#form_config_fumo').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_config_fumo').parent();
+            g_oFilmPriceConfig.load();
+        });
+
+        $('#form_config_parttype').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_config_parttype').parent();
+            g_oParttypeConfig.load();
+        });
+
+        $('#form_config_parts').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_config_parts').parent();
+            g_oPartConfig.load();
+        });
+
+        $('#form_config_user').on('click', function() {
+            if (oLiCurrentActive != null) {
+                oLiCurrentActive.removeClass("active");
+            }
+            oLiCurrentActive = $('#form_config_user').parent();
+            g_oUserConfig.load();
+        });
+
+        //g_oBoxCalculate.load();
+
+        //判断输入的字符是否为整数    
+        function isInt(value)  {             
+            if (value.length != 0) {    
+                reg = /^[0-9]*$/;        
+                if (!reg.test(value)) {       
+                    return false;       
+                }  
+                return true;  
+            }   
+            return false; 
+        }  
+
+        //判断输入的字符是否为合法价格   
+        function isPrice(value)  {             
+            if (value.length != 0) {    
+                //   reg = /([0-9]+.[0-9]{2})[0-9]*/;   
+                reg = /(^[1-9]\d*(\.\d{1,2})?$)|(^0(\.\d{1,2})?$)/;   
+                if (!reg.test(value)) {       
+                    return false;       
+                }  
+                return true;  
+            }   
+            return false; 
+        }
+
+        //判断输入内容是否为空    
+        function isNull(value) {            
+            if (value.length == 0) {           
+                return true;    
+            }    
+            return false;
+        }
+    </script>
+</body>
+
+</html>
