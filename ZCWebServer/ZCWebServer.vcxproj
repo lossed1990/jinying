@@ -47,13 +47,13 @@
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\3rdPart\jemalloc_4.2.1\include\msvc_compat;C:\3rdPart\jemalloc_4.2.1\include;C:\3rdPart\boost_1_61_0\boost;C:\3rdPart\boost_1_61_0;.\thirdpart\include\curl;.\thirdpart\include\rapidjson;$(IncludePath)</IncludePath>
+    <IncludePath>D:\3rdPart\jemalloc_4.2.1\include\msvc_compat;D:\3rdPart\jemalloc_4.2.1\include;D:\3rdPart\boost_1_61_0\boost;D:\3rdPart\boost_1_61_0;.\thirdpart\include\curl;.\thirdpart\include\rapidjson;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\3rdPart\jemalloc_4.2.1\include\msvc_compat;C:\3rdPart\jemalloc_4.2.1\include;C:\3rdPart\boost_1_61_0\boost;C:\3rdPart\boost_1_61_0;.\thirdpart\include\curl;.\thirdpart\include\rapidjson;$(IncludePath)</IncludePath>
+    <IncludePath>D:\3rdPart\jemalloc_4.2.1\include\msvc_compat;D:\3rdPart\jemalloc_4.2.1\include;D:\3rdPart\boost_1_61_0\boost;D:\3rdPart\boost_1_61_0;.\thirdpart\include\curl;.\thirdpart\include\rapidjson;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

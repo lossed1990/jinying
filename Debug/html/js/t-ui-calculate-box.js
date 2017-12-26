@@ -32,6 +32,7 @@ var UIBoxCalculate = {
         var m_dataSet = new Array(); //选纸配件
         var m_sourceSelect = new Array(); //选纸配件
 
+        var $m_ui_input_order = null;
         var $m_ui_input_customer = null;
         var $m_ui_input_finalprice = null;
         var $m_ui_btn_save = null;
@@ -64,33 +65,33 @@ var UIBoxCalculate = {
             loadUI();
         }
 
-        wnd.loadByParam = function(param){
+        wnd.loadByParam = function(condition, orderinfo) {
             loadUI();
-            var paramJson = JSON.parse(param); 
-            $m_ui_input_count.val(paramJson.count);
-            
-            //加载配件
-            m_param_parts = paramJson.parts;
+            var conditionJson = JSON.parse(condition);
+            $m_ui_input_count.val(conditionJson.count);
 
-            for(var i=0;i<paramJson.source.length;++i){
+            //加载配件
+            m_param_parts = conditionJson.parts;
+
+            for (var i = 0; i < conditionJson.source.length; ++i) {
                 var subItem = {
-                    pt: (paramJson.source[i].producttype == 1) ? "礼品盒(盖)" : "礼品盒(底)",
-                    st: paramJson.source[i].sourcetype,
-                    sut: (paramJson.source[i].sourceusetype == 0) ? "灰板" : "包纸",
-                    btangjin: (paramJson.source[i].btangjin) ? "烫金" : "不烫金",
-                    bfilm: (paramJson.source[i].bfilm) ? "覆膜" : "不覆膜",
-                    bpress: (paramJson.source[i].bpress) ? "印刷" : "不印刷",
-                    presstype: paramJson.source[i].presstype
+                    pt: (conditionJson.source[i].producttype == 1) ? "礼品盒(盖)" : "礼品盒(底)",
+                    st: conditionJson.source[i].sourcetype,
+                    sut: (conditionJson.source[i].sourceusetype == 0) ? "灰板" : "包纸",
+                    btangjin: (conditionJson.source[i].btangjin) ? "烫金" : "不烫金",
+                    bfilm: (conditionJson.source[i].bfilm) ? "覆膜" : "不覆膜",
+                    bpress: (conditionJson.source[i].bpress) ? "印刷" : "不印刷",
+                    presstype: conditionJson.source[i].presstype
                 }
 
-                if(paramJson.source[i].producttype == 1){
-                    $m_ui_input_len.val(paramJson.source[i].l);
-                    $m_ui_input_width.val(paramJson.source[i].w);
-                    $m_ui_input_height.val(paramJson.source[i].h);
-                }else{
-                    $m_ui_input_len_x.val(paramJson.source[i].l);
-                    $m_ui_input_width_x.val(paramJson.source[i].w);
-                    $m_ui_input_height_x.val(paramJson.source[i].h);
+                if (conditionJson.source[i].producttype == 1) {
+                    $m_ui_input_len.val(conditionJson.source[i].l);
+                    $m_ui_input_width.val(conditionJson.source[i].w);
+                    $m_ui_input_height.val(conditionJson.source[i].h);
+                } else {
+                    $m_ui_input_len_x.val(conditionJson.source[i].l);
+                    $m_ui_input_width_x.val(conditionJson.source[i].w);
+                    $m_ui_input_height_x.val(conditionJson.source[i].h);
                 }
 
                 m_sourceSelect.push(subItem);
@@ -101,6 +102,13 @@ var UIBoxCalculate = {
                 data: m_sourceSelect,
                 columns: m_tablecolumns
             });
+
+            //加载订单信息
+            $m_ui_input_order.val(orderinfo.order);
+            $m_ui_input_order.prop('disabled', true);
+            $m_ui_input_customer.val(orderinfo.customer);
+            $m_ui_input_finalprice.val(orderinfo.finalprice);
+            $('#input_total_price').val(orderinfo.price);
         }
 
         //加载用户配置界面
@@ -315,15 +323,17 @@ var UIBoxCalculate = {
                     </div>\
                     <div class="x_content">\
                         <div class="form-horizontal form-label-left">\
-                            <div class="form-group">\
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">客户名称</label>\
-                                <div class="col-md-8 col-sm-8 col-xs-12">\
-                                    <input id="input_customer" type="text" class="form-control" placeholder="">\
-                                </div>\
-                                <label class="control-label col-md-1 col-sm-1 col-xs-12">最终总价</label>\
-                                <div class="col-md-2 col-sm-2 col-xs-12">\
-                                    <input id="input_finalprice" type="text" class="form-control" placeholder="">\
-                                </div>\
+                            <label class="control-label col-md-1 col-sm-1 col-xs-12">订单名称</label>\
+                            <div class="col-md-5 col-sm-5 col-xs-12">\
+                                <input id="input_order" type="text" class="form-control" placeholder="">\
+                            </div>\
+                            <label class="control-label col-md-1 col-sm-1 col-xs-12">客户名称</label>\
+                            <div class="col-md-5 col-sm-5 col-xs-12">\
+                                <input id="input_customer" type="text" class="form-control" placeholder="">\
+                            </div>\
+                            <label class="control-label col-md-1 col-sm-1 col-xs-12">最终总价</label>\
+                            <div class="col-md-1 col-sm-1 col-xs-12">\
+                                <input id="input_finalprice" type="text" class="form-control" placeholder="">\
                             </div>\
                         </div>\
                         <div class = "ln_solid" > \
@@ -376,6 +386,7 @@ var UIBoxCalculate = {
             $m_ui_input_height_x = $('#input_height_x');
             $m_ui_check_is_tangjin = $('#check_is_tangjin');
 
+            $m_ui_input_order = $('#input_order');
             $m_ui_input_customer = $('#input_customer');
             $m_ui_input_finalprice = $('#input_finalprice');
             $m_ui_btn_save = $('#submit_save');
@@ -435,15 +446,14 @@ var UIBoxCalculate = {
             });
 
             //遍历刷新状态
-            if(m_param_parts.length > 0)
-            {
+            if (m_param_parts.length > 0) {
                 var checks = $('.check_aero');
-                checks.each(function(i,check){
-                    if(m_param_parts.indexOf(check.name) > -1){
+                checks.each(function(i, check) {
+                    if (m_param_parts.indexOf(check.name) > -1) {
                         $(check).iCheck('check');
                     }
                 });
-            } 
+            }
         }
 
         function refreshSourceType() {
@@ -574,13 +584,13 @@ var UIBoxCalculate = {
 
         function bingAddSource() {
             $m_ui_btn_addsource.on('click', function() {
-                if($m_ui_select_source.val() == null){
+                if ($m_ui_select_source.val() == null) {
                     toastr.error('暂未配置材料类型信息，请前往配置！');
                     return;
                 }
 
                 var subData = new Array();
-                var bfilmTangjin,bfilmTip, bPressTip;
+                var bfilmTangjin, bfilmTip, bPressTip;
                 var strPressType = null;
                 if ($m_ui_check_is_tangjin.is(':checked')) {
                     bfilmTangjin = "烫金";
@@ -600,7 +610,7 @@ var UIBoxCalculate = {
                     strPressType = "-";
                 }
 
-                if(strPressType == null){
+                if (strPressType == null) {
                     toastr.error('暂未配置印刷方式信息，请前往配置！');
                     return;
                 }
@@ -609,7 +619,7 @@ var UIBoxCalculate = {
                     pt: $m_ui_select_producttype.val().trim(),
                     st: $m_ui_select_source.val().trim(),
                     sut: $m_ui_select_sourceuser_type.val().trim(),
-                    btangjin:bfilmTangjin,
+                    btangjin: bfilmTangjin,
                     bfilm: bfilmTip,
                     bpress: bPressTip,
                     presstype: strPressType
@@ -783,7 +793,7 @@ var UIBoxCalculate = {
                         producttype: parseInt(nProductType),
                         sourcetype: m_sourceSelect[i].st.trim(),
                         sourceusetype: parseInt(nSourceUseType), //灰板、包纸
-                        btangjin:btangjin,
+                        btangjin: btangjin,
                         bfilm: bfilm,
                         bpress: bpress,
                         presstype: m_sourceSelect[i].presstype.trim()
@@ -819,15 +829,19 @@ var UIBoxCalculate = {
                             "createdRow": function(row, data, dataIndex) {    
                                 if (data[0] == "错误") {
                                     $('td', row).css('color', '#f00')
-                                } else if(data[0] == "需求"){
+                                } 
+                                else if (data[0] == "需求") {
                                     $('td', row).css('color', '#8080C0')
-                                } else if(data[0] == "材料"){
+                                } 
+                                else if (data[0] == "材料") {
                                     $('td', row).css('color', '#00B271')
-                                } else if(data[0] == "印刷"){
-                                    $('td', row).css('color', '#479AC7') 
-                                } else if(data[0] == "覆膜"){
+                                } else if (data[0] == "印刷") {
+                                    $('td', row).css('color', '#479AC7')
+                                } 
+                                else if (data[0] == "覆膜") {
                                     $('td', row).css('color', '#B45B3E')
-                                } else if(data[0] == "压痕"){
+                                } 
+                                else if (data[0] == "压痕") {
                                     $('td', row).css('color', '#6699CC')
                                 }  
                             }
@@ -844,6 +858,16 @@ var UIBoxCalculate = {
 
         function bingSaveOrder() {
             $m_ui_btn_save.on('click', function() {
+                if (m_sourceSelect.length <= 0) {
+                    toastr.error('尚未选择任何制作材料，无法保存！');
+                    return;
+                }
+
+                if (isNull($m_ui_input_order.val().trim())) {
+                    toastr.error('订单名称不能为空！');
+                    return;
+                }
+
                 if (isNull($m_ui_input_customer.val().trim())) {
                     toastr.error('客户名称不能为空！');
                     return;
@@ -853,7 +877,7 @@ var UIBoxCalculate = {
                     //toastr.error('最终总价不能为空！');
                     //return;
                     $m_ui_input_finalprice.val('0.00');
-                }else{
+                } else {
                     if (!isPrice($m_ui_input_finalprice.val().trim())) {
                         toastr.error('最终总价输入的价格值不合法，仅能精确到小数点后两位！');
                         return;
@@ -902,7 +926,7 @@ var UIBoxCalculate = {
                         producttype: parseInt(nProductType),
                         sourcetype: m_sourceSelect[i].st.trim(),
                         sourceusetype: parseInt(nSourceUseType), //灰板、包纸
-                        btangjin:btangjin,
+                        btangjin: btangjin,
                         bfilm: bfilm,
                         bpress: bpress,
                         presstype: m_sourceSelect[i].presstype.trim()
@@ -922,27 +946,16 @@ var UIBoxCalculate = {
                 };
 
                 var requestParam = {
-                    customer:$m_ui_input_customer.val().trim(),
-                    user: $('#welcome_tip').html().trim(),
+                    order: $m_ui_input_order.val().trim(),
+                    customer: $m_ui_input_customer.val().trim(),
                     price: parseFloat($('#input_total_price').val().trim()),
-                    finalprice:parseFloat($m_ui_input_finalprice.val().trim()),
-                    condition:conditionParam
+                    finalprice: parseFloat($m_ui_input_finalprice.val().trim()),
+                    condition: conditionParam
                 };
 
-                $.ajax({    
-                    type: "POST",
-                    url: "order-add.zc",
-                    cache:  false,
-                    data: JSON.stringify(requestParam),
-                    dataType: "json",
-                    success: function (result)  {     //封装返回数据    
-                        toastr.success('订单数据保存成功');
-                        $m_ui_btn_save.prop('disabled', true);;
-                    },
-                    error: function() {
-                        toastr.error('向服务器请求失败,请稍后重试！');
-                    }  
-                });  
+                g_common.ajaxSaveOrder(requestParam, function() {
+                    $m_ui_btn_save.prop('disabled', true);
+                });
             });
         }
 

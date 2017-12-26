@@ -18,7 +18,7 @@ public:
 	bool ChangePassword(string& strOldPw, string& strNewPw);
 
 private:
-	int m_nType;                 ///< 用户类型
+	int m_nType;                 ///< 用户类型 1-管理员
 	string m_strName;            ///< 用户名 
 	string m_strPassWord;        ///< 登陆密码
 };

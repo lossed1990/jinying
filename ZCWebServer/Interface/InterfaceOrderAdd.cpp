@@ -15,12 +15,12 @@ using namespace rapidjson;
 
 CInterfaceOrderAdd::CInterfaceOrderAdd()
 {
-	//创建空数据库，只需要执行一次即可
+	////创建空数据库，只需要执行一次即可
 	//auto pCallBack = [](void *data, int argc, char **argv, char **azColName) -> int
 	//{
 	//	int i;
 	//	fprintf(stderr, "%s: ", (const char*)data);
-	//	for (i = 0; i<argc; i++){
+	//	for (i = 0; i < argc; i++){
 	//		printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
 	//	}
 	//	printf("\n");
@@ -29,13 +29,15 @@ CInterfaceOrderAdd::CInterfaceOrderAdd()
 
 	///* Create SQL statement */
 	//char* sql = "CREATE TABLE g_orders("  \
-	//"CUSTOMERNAME   CHAR(64)  NOT NULL," \
-	//"USERNAME       CHAR(64)  NOT NULL," \
-	//"PRICE          REAL      NOT NULL," \
-	//"FINALPRICE     REAL      NOT NULL," \
-	//"TIME           DATETIME  NOT NULL," \
-	//"CONDITION      TEXT      NOT NULL );";
+		//	"ORDERRNAME     TEXT      PRIMARY KEY   NOT NULL," \
+		//	"CUSTOMERNAME   CHAR(64)  NOT NULL," \
+		//	"USERNAME       CHAR(64)  NOT NULL," \
+		//	"PRICE          REAL      NOT NULL," \
+		//	"FINALPRICE     REAL      NOT NULL," \
+		//	"TIME           DATETIME  NOT NULL," \
+		//	"CONDITION      TEXT      NOT NULL );";
 
+	//fprintf(stdout, "CDBHelper::CREATE TABLE\n");
 	//CDBHelper::Instance()->ExecSql(sql, pCallBack);
 }
 
@@ -54,20 +56,17 @@ void CInterfaceOrderAdd::ExecuteInterface(char* pReqBody, int nReqBodyLen, strin
 	Document tReqDoc;
 	tReqDoc.Parse(pReqBody);
 
-	if (tReqDoc.FindMember("customer") != tReqDoc.MemberEnd() &&
+	if (tReqDoc.FindMember("order") != tReqDoc.MemberEnd() &&
+		tReqDoc.FindMember("customer") != tReqDoc.MemberEnd() &&
 		tReqDoc.FindMember("user") != tReqDoc.MemberEnd() &&
 		tReqDoc.FindMember("price") != tReqDoc.MemberEnd() &&
 		tReqDoc.FindMember("finalprice") != tReqDoc.MemberEnd() &&
 		tReqDoc.FindMember("condition") != tReqDoc.MemberEnd())
 	{
-		//char pcCustomerTemp[256] = { 0 };
-		//CEncodingTools::ConvertUTF8ToGB(tReqDoc["customer"].GetString(), pcCustomerTemp, 256);
-		//char pcUserTemp[256] = { 0 };
-		//CEncodingTools::ConvertUTF8ToGB(tReqDoc["user"].GetString(), pcUserTemp, 256);
-
+		string pcOrderNameTemp = tReqDoc["order"].GetString();
 		string pcCustomerTemp = tReqDoc["customer"].GetString();
 		string pcUserTemp = tReqDoc["user"].GetString();
-		
+
 		float fPriceTemp = tReqDoc["price"].GetFloat();
 		float fFinalPriceTemp = tReqDoc["finalprice"].GetFloat();
 
@@ -80,16 +79,17 @@ void CInterfaceOrderAdd::ExecuteInterface(char* pReqBody, int nReqBodyLen, strin
 		{
 			int i;
 			fprintf(stderr, "%s: ", (const char*)data);
-			for (i = 0; i<argc; i++){
+			for (i = 0; i < argc; i++){
 				printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
 			}
 			printf("\n");
 			return 0;
 		};
 
+		//主键存在，则覆盖之前的，否则新增
 		char chSql[8096] = { 0 };
-		sprintf_s(chSql,8096,"INSERT INTO g_orders (CUSTOMERNAME,USERNAME,PRICE,FINALPRICE,TIME,CONDITION) VALUES ('%s', '%s', %.2f,  %.2f, datetime('now','localtime'),'%s');",
-			pcCustomerTemp.c_str(), pcUserTemp.c_str(), fPriceTemp, fFinalPriceTemp, pcConditionTemp.c_str());
+		sprintf_s(chSql, 8096, "INSERT OR REPLACE INTO g_orders (ORDERRNAME,CUSTOMERNAME,USERNAME,PRICE,FINALPRICE,TIME,CONDITION) VALUES ('%s', '%s', '%s', %.2f,  %.2f, datetime('now','localtime'),'%s');",
+			pcOrderNameTemp.c_str(), pcCustomerTemp.c_str(), pcUserTemp.c_str(), fPriceTemp, fFinalPriceTemp, pcConditionTemp.c_str());
 
 		bool bRet = CDBHelper::Instance()->ExecSql(chSql, pCallBack);
 		if (bRet)

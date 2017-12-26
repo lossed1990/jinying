@@ -22,6 +22,7 @@ var UIReticuleCalculate = {
 
         var m_dataSet = new Array(); //选纸配件
 
+        var $m_ui_input_order = null;
         var $m_ui_input_customer = null;
         var $m_ui_input_finalprice = null;
         var $m_ui_btn_save = null;
@@ -36,32 +37,39 @@ var UIReticuleCalculate = {
             loadUI();
         }
 
-        wnd.loadByParam = function(param){
+        wnd.loadByParam = function(condition, orderinfo) {
             loadUI();
-            var paramJson = JSON.parse(param); 
+            var conditionJson = JSON.parse(condition);
 
-            $m_ui_input_count.val(paramJson.count);
-            $m_ui_input_len.val(paramJson.source[0].l);
-            $m_ui_input_width.val(paramJson.source[0].w);
-            $m_ui_input_height.val(paramJson.source[0].h);
-           
-            if(paramJson.source[0].bfilm){
+            $m_ui_input_count.val(conditionJson.count);
+            $m_ui_input_len.val(conditionJson.source[0].l);
+            $m_ui_input_width.val(conditionJson.source[0].w);
+            $m_ui_input_height.val(conditionJson.source[0].h);
+
+            if (conditionJson.source[0].bfilm) {
                 $m_ui_check_is_film.iCheck('check');
-            }else{
+            } else {
                 $m_ui_check_is_film.iCheck('uncheck');
             }
-            if(paramJson.source[0].bpress){
+            if (conditionJson.source[0].bpress) {
                 $m_ui_check_is_press.iCheck('check');
-            }else{
+            } else {
                 $m_ui_check_is_press.iCheck('uncheck');
             }
 
             //缓存参数，以防异步加载时设置值被重置
-            m_param_sourcetype = paramJson.source[0].sourcetype;
-            m_param_presstype = paramJson.source[0].presstype;
+            m_param_sourcetype = conditionJson.source[0].sourcetype;
+            m_param_presstype = conditionJson.source[0].presstype;
 
             //加载配件
-            m_param_parts = paramJson.parts;
+            m_param_parts = conditionJson.parts;
+
+            //加载订单信息
+            $m_ui_input_order.val(orderinfo.order);
+            $m_ui_input_order.prop('disabled', true);
+            $m_ui_input_customer.val(orderinfo.customer);
+            $m_ui_input_finalprice.val(orderinfo.finalprice);
+            $('#input_total_price').val(orderinfo.price);
         }
 
         //加载用户配置界面
@@ -219,12 +227,16 @@ var UIReticuleCalculate = {
                 <div class="x_content">\
                     <div class="form-horizontal form-label-left">\
                         <div class="form-group">\
+                            <label class="control-label col-md-1 col-sm-1 col-xs-12">订单名称</label>\
+                            <div class="col-md-5 col-sm-5 col-xs-12">\
+                                <input id="input_order" type="text" class="form-control" placeholder="">\
+                            </div>\
                             <label class="control-label col-md-1 col-sm-1 col-xs-12">客户名称</label>\
-                            <div class="col-md-8 col-sm-8 col-xs-12">\
+                            <div class="col-md-5 col-sm-5 col-xs-12">\
                                 <input id="input_customer" type="text" class="form-control" placeholder="">\
                             </div>\
                             <label class="control-label col-md-1 col-sm-1 col-xs-12">最终总价</label>\
-                            <div class="col-md-2 col-sm-2 col-xs-12">\
+                            <div class="col-md-1 col-sm-1 col-xs-12">\
                                 <input id="input_finalprice" type="text" class="form-control" placeholder="">\
                             </div>\
                         </div>\
@@ -269,6 +281,7 @@ var UIReticuleCalculate = {
             $m_ui_check_is_film = $('#check_is_film');
             $m_ui_check_is_press = $('#check_is_press');
 
+            $m_ui_input_order = $('#input_order');
             $m_ui_input_customer = $('#input_customer');
             $m_ui_input_finalprice = $('#input_finalprice');
             $m_ui_btn_save = $('#submit_save');
@@ -326,15 +339,14 @@ var UIReticuleCalculate = {
             });
 
             //遍历刷新状态
-            if(m_param_parts.length > 0)
-            {
+            if (m_param_parts.length > 0) {
                 var checks = $('.check_aero');
-                checks.each(function(i,check){
-                    if(m_param_parts.indexOf(check.name) > -1){
+                checks.each(function(i, check) {
+                    if (m_param_parts.indexOf(check.name) > -1) {
                         $(check).iCheck('check');
                     }
                 });
-            } 
+            }
         }
 
         function refreshSourceType() {
@@ -358,7 +370,7 @@ var UIReticuleCalculate = {
                     }
                     $m_ui_select_source.html(strHtml);
 
-                    if(m_param_sourcetype != null){
+                    if (m_param_sourcetype != null) {
                         $m_ui_select_source.val(m_param_sourcetype);
                     }
                 },
@@ -390,7 +402,7 @@ var UIReticuleCalculate = {
                     }
                     $m_ui_select_presstype.html(strHtml);
 
-                    if(m_param_sourcetype != null){
+                    if (m_param_sourcetype != null) {
                         $m_ui_select_presstype.val(m_param_presstype);
                     }
                 },
@@ -526,7 +538,7 @@ var UIReticuleCalculate = {
                         producttype: 0,
                         sourcetype: $m_ui_select_source.val().trim(),
                         sourceusetype: 0, //灰板、包纸
-                        btangjin:false,
+                        btangjin: false,
                         bfilm: $m_ui_check_is_film.is(':checked'),
                         bpress: $m_ui_check_is_press.is(':checked'),
                         presstype: $m_ui_select_presstype.val().trim(),
@@ -551,15 +563,19 @@ var UIReticuleCalculate = {
                             "createdRow": function(row, data, dataIndex) {    
                                 if (data[0] == "错误") {
                                     $('td', row).css('color', '#f00')
-                                } else if(data[0] == "需求"){
+                                } 
+                                else if (data[0] == "需求") {
                                     $('td', row).css('color', '#8080C0')
-                                } else if(data[0] == "材料"){
+                                } 
+                                else if (data[0] == "材料") {
                                     $('td', row).css('color', '#00B271')
-                                } else if(data[0] == "印刷"){
-                                    $('td', row).css('color', '#479AC7') 
-                                } else if(data[0] == "覆膜"){
+                                } else if (data[0] == "印刷") {
+                                    $('td', row).css('color', '#479AC7')
+                                } 
+                                else if (data[0] == "覆膜") {
                                     $('td', row).css('color', '#B45B3E')
-                                } else if(data[0] == "压痕"){
+                                } 
+                                else if (data[0] == "压痕") {
                                     $('td', row).css('color', '#6699CC')
                                 }   
                             }
@@ -576,6 +592,11 @@ var UIReticuleCalculate = {
 
         function bingSaveOrder() {
             $m_ui_btn_save.on('click', function() {
+                if (isNull($m_ui_input_order.val().trim())) {
+                    toastr.error('订单名称不能为空！');
+                    return;
+                }
+
                 if (isNull($m_ui_input_customer.val().trim())) {
                     toastr.error('客户名称不能为空！');
                     return;
@@ -585,7 +606,7 @@ var UIReticuleCalculate = {
                     //toastr.error('最终总价不能为空！');
                     //return;
                     $m_ui_input_finalprice.val('0.00');
-                }else{
+                } else {
                     if (!isPrice($m_ui_input_finalprice.val().trim())) {
                         toastr.error('最终总价输入的价格值不合法，仅能精确到小数点后两位！');
                         return;
@@ -606,7 +627,7 @@ var UIReticuleCalculate = {
                         producttype: 0,
                         sourcetype: $m_ui_select_source.val().trim(),
                         sourceusetype: 0, //灰板、包纸
-                        btangjin:false,
+                        btangjin: false,
                         bfilm: $m_ui_check_is_film.is(':checked'),
                         bpress: $m_ui_check_is_press.is(':checked'),
                         presstype: $m_ui_select_presstype.val().trim(),
@@ -615,30 +636,19 @@ var UIReticuleCalculate = {
                 };
 
                 var requestParam = {
-                    customer:$m_ui_input_customer.val().trim(),
-                    user: $('#welcome_tip').html().trim(),
+                    order: $m_ui_input_order.val().trim(),
+                    customer: $m_ui_input_customer.val().trim(),
                     price: parseFloat($('#input_total_price').val().trim()),
-                    finalprice:parseFloat($m_ui_input_finalprice.val().trim()),
-                    condition:conditionParam
+                    finalprice: parseFloat($m_ui_input_finalprice.val().trim()),
+                    condition: conditionParam
                 };
 
-                $.ajax({    
-                    type: "POST",
-                    url: "order-add.zc",
-                    cache:  false,
-                    data: JSON.stringify(requestParam),
-                    dataType: "json",
-                    success: function (result)  {     //封装返回数据    
-                        toastr.success('订单数据保存成功');
-                        $m_ui_btn_save.prop('disabled', true);;
-                    },
-                    error: function() {
-                        toastr.error('向服务器请求失败,请稍后重试！');
-                    }  
-                });  
+                g_common.ajaxSaveOrder(requestParam, function() {
+                    $m_ui_btn_save.prop('disabled', true);
+                });
             });
         }
-       
+
         return wnd;
     }
 };
