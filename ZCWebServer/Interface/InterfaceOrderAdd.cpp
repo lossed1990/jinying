@@ -56,13 +56,15 @@ void CInterfaceOrderAdd::ExecuteInterface(char* pReqBody, int nReqBodyLen, strin
 	Document tReqDoc;
 	tReqDoc.Parse(pReqBody);
 
-	if (tReqDoc.FindMember("order") != tReqDoc.MemberEnd() &&
+	if (tReqDoc.FindMember("type") != tReqDoc.MemberEnd() && 
+		tReqDoc.FindMember("order") != tReqDoc.MemberEnd() &&
 		tReqDoc.FindMember("customer") != tReqDoc.MemberEnd() &&
 		tReqDoc.FindMember("user") != tReqDoc.MemberEnd() &&
 		tReqDoc.FindMember("price") != tReqDoc.MemberEnd() &&
 		tReqDoc.FindMember("finalprice") != tReqDoc.MemberEnd() &&
 		tReqDoc.FindMember("condition") != tReqDoc.MemberEnd())
 	{
+		int nType = tReqDoc["type"].GetInt(); //0-新增  1-修改
 		string pcOrderNameTemp = tReqDoc["order"].GetString();
 		string pcCustomerTemp = tReqDoc["customer"].GetString();
 		string pcUserTemp = tReqDoc["user"].GetString();
@@ -87,10 +89,21 @@ void CInterfaceOrderAdd::ExecuteInterface(char* pReqBody, int nReqBodyLen, strin
 		};
 
 		//主键存在，则覆盖之前的，否则新增
-		char chSql[8096] = { 0 };
+		/*char chSql[8096] = { 0 };
 		sprintf_s(chSql, 8096, "INSERT OR REPLACE INTO g_orders (ORDERRNAME,CUSTOMERNAME,USERNAME,PRICE,FINALPRICE,TIME,CONDITION) VALUES ('%s', '%s', '%s', %.2f,  %.2f, datetime('now','localtime'),'%s');",
-			pcOrderNameTemp.c_str(), pcCustomerTemp.c_str(), pcUserTemp.c_str(), fPriceTemp, fFinalPriceTemp, pcConditionTemp.c_str());
-
+			pcOrderNameTemp.c_str(), pcCustomerTemp.c_str(), pcUserTemp.c_str(), fPriceTemp, fFinalPriceTemp, pcConditionTemp.c_str());*/
+		char chSql[8096] = { 0 };
+		if (nType == 0)
+		{
+			sprintf_s(chSql, 8096, "INSERT INTO g_orders (ORDERRNAME,CUSTOMERNAME,USERNAME,PRICE,FINALPRICE,TIME,CONDITION) VALUES ('%s', '%s', '%s', %.2f,  %.2f, datetime('now','localtime'),'%s');",
+				pcOrderNameTemp.c_str(), pcCustomerTemp.c_str(), pcUserTemp.c_str(), fPriceTemp, fFinalPriceTemp, pcConditionTemp.c_str());
+		}
+		else
+		{
+			sprintf_s(chSql, 8096, "INSERT OR REPLACE INTO g_orders (ORDERRNAME,CUSTOMERNAME,USERNAME,PRICE,FINALPRICE,TIME,CONDITION) VALUES ('%s', '%s', '%s', %.2f,  %.2f, datetime('now','localtime'),'%s');",
+				pcOrderNameTemp.c_str(), pcCustomerTemp.c_str(), pcUserTemp.c_str(), fPriceTemp, fFinalPriceTemp, pcConditionTemp.c_str()); 
+		}
+		
 		bool bRet = CDBHelper::Instance()->ExecSql(chSql, pCallBack);
 		if (bRet)
 		{
@@ -99,7 +112,7 @@ void CInterfaceOrderAdd::ExecuteInterface(char* pReqBody, int nReqBodyLen, strin
 		}
 		else
 		{
-			strReturn = "{\"ok\":1,\"errorinfo\":\"插入数据失败，请稍后重试！\"}";
+			strReturn = "{\"ok\":1,\"errorinfo\":\"订单已存在，请修改订单名称！\"}";
 			return;
 		}
 	}

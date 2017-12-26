@@ -43,7 +43,7 @@ void CInterfaceOrderGetCondition::ExecuteInterface(char* pReqBody, int nReqBodyL
 		int nId = tReqDoc["id"].GetInt();
 		auto pCallBack = [&tDoc, &allocator, &bSuccess](sqlite3_stmt* pStmt)
 		{
-			const char* pCondition = (const char*)sqlite3_column_text(pStmt, 5);
+			const char* pCondition = (const char*)sqlite3_column_text(pStmt, 6);
 			char pcConditionTemp[8196] = { 0 };
 			CEncodingTools::ConvertUTF8ToGB(pCondition, pcConditionTemp, 8196);
 			Value vCondition(kStringType);

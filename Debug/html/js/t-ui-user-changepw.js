@@ -109,7 +109,7 @@ var UIUserChangePW = {
                         if (result.ok == 0) {
                             window.location = "/";
                         } else {
-                            toastr.error('密码修改失败,' + result.errorinfo);
+                            toastr.error(result.errorinfo);
                         }
                     },
                     error: function() {

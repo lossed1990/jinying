@@ -31,13 +31,16 @@ var UIReticuleCalculate = {
         var m_param_sourcetype = null;
         var m_param_presstype = null;
         var m_param_parts = [];
+        var m_bLoadByParam = false;
 
         //=====公共方法=====
         wnd.load = function() {
+            m_bLoadByParam = false;
             loadUI();
         }
 
         wnd.loadByParam = function(condition, orderinfo) {
+            m_bLoadByParam = true;
             loadUI();
             var conditionJson = JSON.parse(condition);
 
@@ -217,42 +220,42 @@ var UIReticuleCalculate = {
                         </div > \
                     </div>\
                 </div>\
-                </div>\
-                <div class="col-md-12 col-sm-12 col-xs-12">\
-                <div class="x_panel">\
-                <div class="x_title">\
-                    <h2>保存订单 <small>功能描述：保存订单客户信息，用于后续查询与下单。</small></h2>\
-                    <div class="clearfix"></div>\
-                </div>\
-                <div class="x_content">\
-                    <div class="form-horizontal form-label-left">\
-                        <div class="form-group">\
-                            <label class="control-label col-md-1 col-sm-1 col-xs-12">订单名称</label>\
-                            <div class="col-md-5 col-sm-5 col-xs-12">\
-                                <input id="input_order" type="text" class="form-control" placeholder="">\
-                            </div>\
-                            <label class="control-label col-md-1 col-sm-1 col-xs-12">客户名称</label>\
-                            <div class="col-md-5 col-sm-5 col-xs-12">\
-                                <input id="input_customer" type="text" class="form-control" placeholder="">\
-                            </div>\
-                            <label class="control-label col-md-1 col-sm-1 col-xs-12">最终总价</label>\
-                            <div class="col-md-1 col-sm-1 col-xs-12">\
-                                <input id="input_finalprice" type="text" class="form-control" placeholder="">\
-                            </div>\
-                        </div>\
-                    </div>\
-                    <div class = "ln_solid" > \
-                    </div>\
-                    <div class="form-horizontal form-label-left">\
-                        <div class = "form-group" > \
-                            <div class = "col-md-5 col-sm-5 col-xs-12 col-md-offset-1" >\
-                                <button id = "submit_save" class = "btn btn-danger" >&nbsp;&nbsp;&nbsp;&nbsp;保&nbsp;&nbsp;存&nbsp;&nbsp;&nbsp;&nbsp;</button>\
-                            </div > \
-                        </div>\
-                    </div>\
-                </div > \
             </div>\
-            </div>\
+            <div class="col-md-12 col-sm-12 col-xs-12">\
+                    <div class="x_panel">\
+                        <div class="x_title">\
+                            <h2>保存订单 <small>功能描述：保存订单客户信息，用于后续查询与下单。</small></h2>\
+                            <div class="clearfix"></div>\
+                        </div>\
+                        <div class="x_content">\
+                            <div class="form-horizontal form-label-left">\
+                                <div class="form-group">\
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">订单名称</label>\
+                                    <div class="col-md-4 col-sm-4 col-xs-12">\
+                                        <input id="input_order" type="text" class="form-control" placeholder="">\
+                                    </div>\
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">客户名称</label>\
+                                    <div class="col-md-4 col-sm-4 col-xs-12">\
+                                        <input id="input_customer" type="text" class="form-control" placeholder="">\
+                                    </div>\
+                                    <label class="control-label col-md-1 col-sm-1 col-xs-12">最终总价</label>\
+                                    <div class="col-md-1 col-sm-1 col-xs-12">\
+                                        <input id="input_finalprice" type="text" class="form-control" placeholder="">\
+                                    </div>\
+                                </div>\
+                            </div>\
+                            <div class = "ln_solid" > \
+                            </div>\
+                            <div class="form-horizontal form-label-left">\
+                                <div class = "form-group" > \
+                                    <div class = "col-md-5 col-sm-5 col-xs-12 col-md-offset-1" >\
+                                        <button id = "submit_save" class = "btn btn-danger" >&nbsp;&nbsp;&nbsp;&nbsp;保&nbsp;&nbsp;存&nbsp;&nbsp;&nbsp;&nbsp;</button>\
+                                    </div > \
+                                </div>\
+                            </div>\
+                        </div > \
+                    </div>\
+                </div>\
             </div>';
             $m_ui_body.html(html_str);
             initUIControlParam();
@@ -636,6 +639,7 @@ var UIReticuleCalculate = {
                 };
 
                 var requestParam = {
+                    type: m_bLoadByParam ? 1 : 0,
                     order: $m_ui_input_order.val().trim(),
                     customer: $m_ui_input_customer.val().trim(),
                     price: parseFloat($('#input_total_price').val().trim()),

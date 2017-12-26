@@ -39,6 +39,7 @@ var UIBoxCalculate = {
 
         //页面参数加载时，请求的数据缓存 
         var m_param_parts = [];
+        var m_bLoadByParam = false;
 
         var m_tablecolumns =   [ { 
             "data": "pt"
@@ -62,10 +63,12 @@ var UIBoxCalculate = {
 
         //=====公共方法=====
         wnd.load = function() {
+            m_bLoadByParam = false;
             loadUI();
         }
 
         wnd.loadByParam = function(condition, orderinfo) {
+            m_bLoadByParam = true;
             loadUI();
             var conditionJson = JSON.parse(condition);
             $m_ui_input_count.val(conditionJson.count);
@@ -323,17 +326,19 @@ var UIBoxCalculate = {
                     </div>\
                     <div class="x_content">\
                         <div class="form-horizontal form-label-left">\
-                            <label class="control-label col-md-1 col-sm-1 col-xs-12">订单名称</label>\
-                            <div class="col-md-5 col-sm-5 col-xs-12">\
-                                <input id="input_order" type="text" class="form-control" placeholder="">\
-                            </div>\
-                            <label class="control-label col-md-1 col-sm-1 col-xs-12">客户名称</label>\
-                            <div class="col-md-5 col-sm-5 col-xs-12">\
-                                <input id="input_customer" type="text" class="form-control" placeholder="">\
-                            </div>\
-                            <label class="control-label col-md-1 col-sm-1 col-xs-12">最终总价</label>\
-                            <div class="col-md-1 col-sm-1 col-xs-12">\
-                                <input id="input_finalprice" type="text" class="form-control" placeholder="">\
+                            <div class="form-group">\
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">订单名称</label>\
+                                <div class="col-md-4 col-sm-4 col-xs-12">\
+                                    <input id="input_order" type="text" class="form-control" placeholder="">\
+                                </div>\
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">客户名称</label>\
+                                <div class="col-md-4 col-sm-4 col-xs-12">\
+                                    <input id="input_customer" type="text" class="form-control" placeholder="">\
+                                </div>\
+                                <label class="control-label col-md-1 col-sm-1 col-xs-12">最终总价</label>\
+                                <div class="col-md-1 col-sm-1 col-xs-12">\
+                                    <input id="input_finalprice" type="text" class="form-control" placeholder="">\
+                                </div>\
                             </div>\
                         </div>\
                         <div class = "ln_solid" > \
@@ -347,8 +352,8 @@ var UIBoxCalculate = {
                         </div>\
                     </div > \
                 </div>\
-            </div>\
-        </div>';
+            </div>';
+
             $m_ui_body.html(html_str);
             initUIControlParam();
             refreshSourceType();
@@ -946,6 +951,7 @@ var UIBoxCalculate = {
                 };
 
                 var requestParam = {
+                    type: m_bLoadByParam ? 1 : 0,
                     order: $m_ui_input_order.val().trim(),
                     customer: $m_ui_input_customer.val().trim(),
                     price: parseFloat($('#input_total_price').val().trim()),
