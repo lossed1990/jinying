@@ -45,9 +45,16 @@
 
     <!-- daterangepicker css-->
     <style type="text/css">
-        #search-date-div { position: relative; }
+        #search-date-div {
+            position: relative;
+        }
+        
         #search-date-div i {
-          position: absolute; bottom: 10px; right: 24px; top: auto; cursor: pointer;
+            position: absolute;
+            bottom: 10px;
+            right: 24px;
+            top: auto;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -131,7 +138,7 @@
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                    <li><a href="javascript:;"> 修改密码</a></li>
+                                    <li><a id='change_pw'> 修改密码</a></li>
                                     <li><a href="index.html"><i class="fa fa-sign-out pull-right"></i>退出</a></li>
                                 </ul>
                             </li>
@@ -147,7 +154,7 @@
                     <div class="row" id="ui_body">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
-                                    <h2>欢迎使用金鹰印务报价系统 </h2>
+                                <h2>欢迎使用金鹰印务报价系统 </h2>
                             </div>
                         </div>
                     </div>
@@ -210,7 +217,7 @@
     <!--tab-->
     <script src="js/bootstrap-tabdrop.js"></script>
 
-    <script type="text/javascript" src="js/t-ui-manager.js"></script>
+    <script type="text/javascript" src="js/t-common.js"></script>
     <script type="text/javascript" src="js/t-ui-calculate-reticule.js"></script>
     <script type="text/javascript" src="js/t-ui-calculate-box.js"></script>
     <script type="text/javascript" src="js/t-ui-order-search.js"></script>
@@ -226,6 +233,7 @@
     <script type="text/javascript" src="js/t-ui-parttype-config.js"></script>
     <script type="text/javascript" src="js/t-ui-part-config.js"></script>
     <script type="text/javascript" src="js/t-ui-user-config.js"></script>
+    <script type="text/javascript" src="js/t-ui-user-changepw.js"></script>
 
     <script type="text/javascript">
         //通过cookie判断是否已经登录
@@ -424,7 +432,9 @@
             g_oUserConfig.load();
         });
 
-        //g_oBoxCalculate.load();
+        $('#change_pw').on('click', function() {
+            g_oUserChangePW.load();
+        });
 
         //判断输入的字符是否为整数    
         function isInt(value)  {             
