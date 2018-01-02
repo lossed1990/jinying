@@ -53,5 +53,6 @@ void CInterfaceDieCutterDelete::ExecuteInterface(char* pReqBody, int nReqBodyLen
 	}
 
 	strReturn = "{\"ok\":0,\"errorinfo\":\"\"}";
+	CDBHelper::Instance()->Log("管理员", "系统配置", "删除刀模规格");
 	return;
 }

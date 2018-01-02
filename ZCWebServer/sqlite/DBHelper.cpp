@@ -1,6 +1,7 @@
 #include <iostream>
 #include "DBHelper.h"
 #include "../ToolFuncs/ToolFuncs.h"
+#include "../JsonRequest/EncodingToolsClass.h"
 
 #ifdef _DEBUG
 #pragma comment (lib, "sqlite/sqlite3_d.lib")
@@ -75,6 +76,68 @@ bool CDBHelper::ExecSearch(const char* chSql, function<void(sqlite3_stmt*)> pCal
 	return true;
 }
 
+void CDBHelper::Log(const char* chUser,const char* chOperateType,const char* chContent)
+{
+	if (!m_bOpenDBSuccess)
+	{
+		return;
+	}
+
+	char chUTF8User[128] = { 0 };
+	char chUTF8OperateType[256] = { 0 };
+	char chUTF8Content[4096] = { 0 };
+	CEncodingTools::ConvertGBToUTF8(chUser, chUTF8User, strlen(chUser) * 2);
+	CEncodingTools::ConvertGBToUTF8(chOperateType, chUTF8OperateType, strlen(chOperateType) * 2);
+	CEncodingTools::ConvertGBToUTF8(chContent, chUTF8Content, strlen(chContent) * 2);
+
+
+	char chSql[8192] = { 0 };
+	sprintf_s(chSql, 8192, "INSERT INTO log (user, type, condition, time) VALUES ('%s', '%s', '%s', datetime('now','localtime'));",
+		chUTF8User, chUTF8OperateType, chUTF8Content);
+
+	auto pCallBack = [](void *data, int argc, char **argv, char **azColName) -> int
+	{
+		int i;
+		fprintf(stderr, "%s: ", (const char*)data);
+		for (i = 0; i < argc; i++){
+			printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+		}
+		printf("\n");
+		return 0;
+	};
+
+	CDBHelper::Instance()->ExecSql(chSql, pCallBack);
+}
+
+void CDBHelper::LogUTF8(const char* chUser, const char* chOperateType, const char* chContent)
+{
+	if (!m_bOpenDBSuccess)
+	{
+		return;
+	}
+
+	char chUTF8User[128] = { 0 };
+	char chUTF8OperateType[256] = { 0 };
+	CEncodingTools::ConvertGBToUTF8(chUser, chUTF8User, strlen(chUser) * 2);
+	CEncodingTools::ConvertGBToUTF8(chOperateType, chUTF8OperateType, strlen(chOperateType) * 2);
+
+	char chSql[8192] = { 0 };
+	sprintf_s(chSql, 8192, "INSERT INTO log (user, type, condition, time) VALUES ('%s', '%s', '%s', datetime('now','localtime'));",
+		chUTF8User, chUTF8OperateType, chContent);
+
+	auto pCallBack = [](void *data, int argc, char **argv, char **azColName) -> int
+	{
+		int i;
+		fprintf(stderr, "%s: ", (const char*)data);
+		for (i = 0; i < argc; i++){
+			printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+		}
+		printf("\n");
+		return 0;
+	};
+
+	CDBHelper::Instance()->ExecSql(chSql, pCallBack);
+}
 
 
 

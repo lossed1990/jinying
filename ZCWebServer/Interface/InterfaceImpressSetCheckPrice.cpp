@@ -42,5 +42,7 @@ void CInterfaceImpressSetCheckPrice::ExecuteInterface(char* pReqBody, int nReqBo
 
 
 	strReturn = "{\"ok\":0,\"errorinfo\":\"\"}";
+
+	CDBHelper::Instance()->Log("管理员", "系统配置", "设置压痕校板费");
 	return;
 }

@@ -48,5 +48,6 @@ void CInterfaceFilmMoreruleDelete::ExecuteInterface(char* pReqBody, int nReqBody
 	}
 
 	strReturn = "{\"ok\":0,\"errorinfo\":\"\"}";
+	CDBHelper::Instance()->Log("管理员", "系统配置", "删除覆膜出数规则");
 	return;
 }

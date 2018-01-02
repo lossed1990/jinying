@@ -57,5 +57,6 @@ void CInterfacePressAdd::ExecuteInterface(char* pReqBody, int nReqBodyLen, strin
 	}
 
 	strReturn = "{\"ok\":0,\"errorinfo\":\"\"}";
+	CDBHelper::Instance()->Log("管理员", "系统配置", "新增印刷机");
 	return;
 }

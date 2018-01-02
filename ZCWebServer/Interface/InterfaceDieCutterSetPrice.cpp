@@ -45,5 +45,6 @@ void CInterfaceDieCutterSetPrice::ExecuteInterface(char* pReqBody, int nReqBodyL
 
 
 	strReturn = "{\"ok\":0,\"errorinfo\":\"\"}";
+	CDBHelper::Instance()->Log("管理员", "系统配置", "设置刀模价格");
 	return;
 }

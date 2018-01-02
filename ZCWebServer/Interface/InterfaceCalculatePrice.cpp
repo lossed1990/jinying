@@ -41,6 +41,13 @@ void CInterfaceCalculatePrice::ExecuteInterface(char* pReqBody, int nReqBodyLen,
 		tReqDoc.FindMember("source") != tReqDoc.MemberEnd() &&
 		tReqDoc.FindMember("parts") != tReqDoc.MemberEnd())
 	{
+		StringBuffer pcConditionBuffer;
+		Writer<StringBuffer> writer(pcConditionBuffer);
+		tReqDoc.Accept(writer);
+		string pcConditionTemp = pcConditionBuffer.GetString();
+
+		CDBHelper::Instance()->LogUTF8("管理员", "计算费用", pcConditionTemp.c_str());
+
 		tParam.nNumber = tReqDoc["count"].GetInt();
 
 		bool bHavingDiecutter = false;    //是否需要刀模费

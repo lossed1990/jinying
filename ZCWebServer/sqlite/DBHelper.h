@@ -27,6 +27,8 @@ public:
 public:
 	bool ExecSql(const char* chSql, int(*callback)(void*, int, char**, char**), void* pUser = NULL);
 	bool ExecSearch(const char* chSql, function<void(sqlite3_stmt*)> pCallBack);
+	void Log(const char* chUser, const char* chOperateType, const char* chContent);
+	void LogUTF8(const char* chUser, const char* chOperateType, const char* chContent);
 
 private:
 	sqlite3* m_db;

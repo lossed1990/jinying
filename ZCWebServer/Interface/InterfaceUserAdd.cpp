@@ -63,5 +63,6 @@ void CInterfaceUserAdd::ExecuteInterface(char* pReqBody, int nReqBodyLen, string
 	}
 
 	strReturn = "{\"ok\":0,\"errorinfo\":\"\"}";
+	CDBHelper::Instance()->Log("管理员", "系统配置", "新增用户");
 	return;
 }

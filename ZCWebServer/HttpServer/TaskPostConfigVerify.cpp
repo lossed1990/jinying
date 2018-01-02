@@ -108,6 +108,7 @@ void CTaskPostConfigVerify::executeTask()
 	}
 
 	redirectConfig(strUserName,CMainModel::Instance()->GetUserTypeByName(strUserName));
+	CDBHelper::Instance()->Log(strUserName.c_str(), "ÓÃ»§µÇÂ½", "");
 	return;
 }
 

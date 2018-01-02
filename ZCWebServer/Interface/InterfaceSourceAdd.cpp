@@ -64,5 +64,6 @@ void CInterfaceSourceAdd::ExecuteInterface(char* pReqBody, int nReqBodyLen, stri
 	}
 
 	strReturn = "{\"ok\":0,\"errorinfo\":\"\"}";
+	CDBHelper::Instance()->Log("管理员", "系统配置", "新增材料");
 	return;
 }

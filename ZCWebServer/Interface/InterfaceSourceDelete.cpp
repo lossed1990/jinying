@@ -48,5 +48,6 @@ void CInterfaceSourceDelete::ExecuteInterface(char* pReqBody, int nReqBodyLen, s
 	}
 
 	strReturn = "{\"ok\":0,\"errorinfo\":\"\"}";
+	CDBHelper::Instance()->Log("管理员", "系统配置", "删除材料");
 	return;
 }

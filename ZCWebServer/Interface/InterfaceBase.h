@@ -5,6 +5,7 @@
 
 #include "InterfaceDefine.h"
 #include "../MainModel/MainModel.h"
+#include "../sqlite/DBHelper.h"
 
 using std::string;
 using std::vector;

@@ -29,13 +29,13 @@ CInterfaceOrderAdd::CInterfaceOrderAdd()
 
 	///* Create SQL statement */
 	//char* sql = "CREATE TABLE g_orders("  \
-		//	"ORDERRNAME     TEXT      PRIMARY KEY   NOT NULL," \
-		//	"CUSTOMERNAME   CHAR(64)  NOT NULL," \
-		//	"USERNAME       CHAR(64)  NOT NULL," \
-		//	"PRICE          REAL      NOT NULL," \
-		//	"FINALPRICE     REAL      NOT NULL," \
-		//	"TIME           DATETIME  NOT NULL," \
-		//	"CONDITION      TEXT      NOT NULL );";
+			//	"ORDERRNAME     TEXT      PRIMARY KEY   NOT NULL," \
+			//	"CUSTOMERNAME   CHAR(64)  NOT NULL," \
+			//	"USERNAME       CHAR(64)  NOT NULL," \
+			//	"PRICE          REAL      NOT NULL," \
+			//	"FINALPRICE     REAL      NOT NULL," \
+			//	"TIME           DATETIME  NOT NULL," \
+			//	"CONDITION      TEXT      NOT NULL );";
 
 	//fprintf(stdout, "CDBHelper::CREATE TABLE\n");
 	//CDBHelper::Instance()->ExecSql(sql, pCallBack);
@@ -56,7 +56,7 @@ void CInterfaceOrderAdd::ExecuteInterface(char* pReqBody, int nReqBodyLen, strin
 	Document tReqDoc;
 	tReqDoc.Parse(pReqBody);
 
-	if (tReqDoc.FindMember("type") != tReqDoc.MemberEnd() && 
+	if (tReqDoc.FindMember("type") != tReqDoc.MemberEnd() &&
 		tReqDoc.FindMember("order") != tReqDoc.MemberEnd() &&
 		tReqDoc.FindMember("customer") != tReqDoc.MemberEnd() &&
 		tReqDoc.FindMember("user") != tReqDoc.MemberEnd() &&
@@ -91,23 +91,37 @@ void CInterfaceOrderAdd::ExecuteInterface(char* pReqBody, int nReqBodyLen, strin
 		//主键存在，则覆盖之前的，否则新增
 		/*char chSql[8096] = { 0 };
 		sprintf_s(chSql, 8096, "INSERT OR REPLACE INTO g_orders (ORDERRNAME,CUSTOMERNAME,USERNAME,PRICE,FINALPRICE,TIME,CONDITION) VALUES ('%s', '%s', '%s', %.2f,  %.2f, datetime('now','localtime'),'%s');",
-			pcOrderNameTemp.c_str(), pcCustomerTemp.c_str(), pcUserTemp.c_str(), fPriceTemp, fFinalPriceTemp, pcConditionTemp.c_str());*/
-		char chSql[8096] = { 0 };
+		pcOrderNameTemp.c_str(), pcCustomerTemp.c_str(), pcUserTemp.c_str(), fPriceTemp, fFinalPriceTemp, pcConditionTemp.c_str());*/
+		char chSql[8192] = { 0 };
 		if (nType == 0)
 		{
-			sprintf_s(chSql, 8096, "INSERT INTO g_orders (ORDERRNAME,CUSTOMERNAME,USERNAME,PRICE,FINALPRICE,TIME,CONDITION) VALUES ('%s', '%s', '%s', %.2f,  %.2f, datetime('now','localtime'),'%s');",
+			sprintf_s(chSql, 8192, "INSERT INTO g_orders (ORDERRNAME,CUSTOMERNAME,USERNAME,PRICE,FINALPRICE,TIME,CONDITION) VALUES ('%s', '%s', '%s', %.2f,  %.2f, datetime('now','localtime'),'%s');",
 				pcOrderNameTemp.c_str(), pcCustomerTemp.c_str(), pcUserTemp.c_str(), fPriceTemp, fFinalPriceTemp, pcConditionTemp.c_str());
 		}
 		else
 		{
-			sprintf_s(chSql, 8096, "INSERT OR REPLACE INTO g_orders (ORDERRNAME,CUSTOMERNAME,USERNAME,PRICE,FINALPRICE,TIME,CONDITION) VALUES ('%s', '%s', '%s', %.2f,  %.2f, datetime('now','localtime'),'%s');",
-				pcOrderNameTemp.c_str(), pcCustomerTemp.c_str(), pcUserTemp.c_str(), fPriceTemp, fFinalPriceTemp, pcConditionTemp.c_str()); 
+			sprintf_s(chSql, 8192, "INSERT OR REPLACE INTO g_orders (ORDERRNAME,CUSTOMERNAME,USERNAME,PRICE,FINALPRICE,TIME,CONDITION) VALUES ('%s', '%s', '%s', %.2f,  %.2f, datetime('now','localtime'),'%s');",
+				pcOrderNameTemp.c_str(), pcCustomerTemp.c_str(), pcUserTemp.c_str(), fPriceTemp, fFinalPriceTemp, pcConditionTemp.c_str());
 		}
-		
+
 		bool bRet = CDBHelper::Instance()->ExecSql(chSql, pCallBack);
 		if (bRet)
 		{
 			strReturn = "{\"ok\":0,\"errorinfo\":\"\"}";
+
+			char pcUserNameTemp[256] = { 0 };
+			CEncodingTools::ConvertUTF8ToGB(tReqDoc["user"].GetString(), pcUserNameTemp, 256);
+			char pcOrderNameTemp[256] = { 0 };
+			CEncodingTools::ConvertUTF8ToGB(tReqDoc["order"].GetString(), pcOrderNameTemp, 256);
+
+			if (nType == 0)
+			{
+				CDBHelper::Instance()->Log(pcUserNameTemp, "新增订单", pcOrderNameTemp);
+			}
+			else
+			{
+				CDBHelper::Instance()->Log(pcUserNameTemp, "修改订单", pcOrderNameTemp);
+			}
 			return;
 		}
 		else

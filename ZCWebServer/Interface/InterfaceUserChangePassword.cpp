@@ -75,5 +75,6 @@ void CInterfaceUserChangePassword::ExecuteInterface(char* pReqBody, int nReqBody
 	}
 
 	strReturn = "{\"ok\":0,\"errorinfo\":\"\"}";
+	CDBHelper::Instance()->Log(pcTemp, "修改密码", "修改密码");
 	return;
 }

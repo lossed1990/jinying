@@ -57,5 +57,6 @@ void CInterfacePressPriceDelete::ExecuteInterface(char* pReqBody, int nReqBodyLe
 	}
 
 	strReturn = "{\"ok\":0,\"errorinfo\":\"\"}";
+	CDBHelper::Instance()->Log("管理员", "系统配置", "删除印刷价格规则");
 	return;
 }
